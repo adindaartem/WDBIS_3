@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.CardLayout;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,21 +30,188 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menuPanel = new javax.swing.JPanel();
+        productionsButton = new javax.swing.JButton();
+        providersButton = new javax.swing.JButton();
+        stockButton = new javax.swing.JButton();
+        ordersButton = new javax.swing.JButton();
+        containerPanel = new javax.swing.JPanel();
+        productionsPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        providersPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        stockPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        ordersPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        productionsButton.setText("Pembuatan Pupuk");
+        productionsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productionsButtonActionPerformed(evt);
+            }
+        });
+
+        providersButton.setText("Penyedia Bahan");
+        providersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providersButtonActionPerformed(evt);
+            }
+        });
+
+        stockButton.setText("Stok");
+        stockButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockButtonActionPerformed(evt);
+            }
+        });
+
+        ordersButton.setText("Pemesanan Pupuk");
+        ordersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordersButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
+        menuPanel.setLayout(menuPanelLayout);
+        menuPanelLayout.setHorizontalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(productionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+            .addComponent(providersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(stockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ordersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        menuPanelLayout.setVerticalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addComponent(productionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(providersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ordersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        containerPanel.setLayout(new java.awt.CardLayout());
+
+        jLabel3.setText("Production");
+
+        javax.swing.GroupLayout productionsPanelLayout = new javax.swing.GroupLayout(productionsPanel);
+        productionsPanel.setLayout(productionsPanelLayout);
+        productionsPanelLayout.setHorizontalGroup(
+            productionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(productionsPanelLayout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 500, Short.MAX_VALUE))
+        );
+        productionsPanelLayout.setVerticalGroup(
+            productionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(productionsPanelLayout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addGap(0, 413, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(productionsPanel, "productionsCard");
+
+        jLabel4.setText("Provider");
+
+        javax.swing.GroupLayout providersPanelLayout = new javax.swing.GroupLayout(providersPanel);
+        providersPanel.setLayout(providersPanelLayout);
+        providersPanelLayout.setHorizontalGroup(
+            providersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providersPanelLayout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 500, Short.MAX_VALUE))
+        );
+        providersPanelLayout.setVerticalGroup(
+            providersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providersPanelLayout.createSequentialGroup()
+                .addComponent(jLabel4)
+                .addGap(0, 413, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(providersPanel, "providersCard");
+
+        jLabel2.setText("Testttt");
+
+        javax.swing.GroupLayout stockPanelLayout = new javax.swing.GroupLayout(stockPanel);
+        stockPanel.setLayout(stockPanelLayout);
+        stockPanelLayout.setHorizontalGroup(
+            stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stockPanelLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 500, Short.MAX_VALUE))
+        );
+        stockPanelLayout.setVerticalGroup(
+            stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stockPanelLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 413, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(stockPanel, "stockCard");
+
+        jLabel1.setText("Stock");
+
+        javax.swing.GroupLayout ordersPanelLayout = new javax.swing.GroupLayout(ordersPanel);
+        ordersPanel.setLayout(ordersPanelLayout);
+        ordersPanelLayout.setHorizontalGroup(
+            ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ordersPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 500, Short.MAX_VALUE))
+        );
+        ordersPanelLayout.setVerticalGroup(
+            ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ordersPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 413, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(ordersPanel, "ordersCard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void productionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productionsButtonActionPerformed
+        CardLayout cl = (CardLayout)(containerPanel.getLayout());
+        cl.show(containerPanel, "productionsCard");
+    }//GEN-LAST:event_productionsButtonActionPerformed
+
+    private void providersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providersButtonActionPerformed
+        CardLayout cl = (CardLayout)(containerPanel.getLayout());
+        cl.show(containerPanel, "providersCard");
+    }//GEN-LAST:event_providersButtonActionPerformed
+
+    private void stockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockButtonActionPerformed
+        CardLayout cl = (CardLayout)(containerPanel.getLayout());
+        cl.show(containerPanel, "stockCard");
+    }//GEN-LAST:event_stockButtonActionPerformed
+
+    private void ordersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersButtonActionPerformed
+        CardLayout cl = (CardLayout)(containerPanel.getLayout());
+        cl.show(containerPanel, "ordersCard");
+    }//GEN-LAST:event_ordersButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +249,19 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel containerPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel menuPanel;
+    private javax.swing.JButton ordersButton;
+    private javax.swing.JPanel ordersPanel;
+    private javax.swing.JButton productionsButton;
+    private javax.swing.JPanel productionsPanel;
+    private javax.swing.JButton providersButton;
+    private javax.swing.JPanel providersPanel;
+    private javax.swing.JButton stockButton;
+    private javax.swing.JPanel stockPanel;
     // End of variables declaration//GEN-END:variables
 }
