@@ -2,13 +2,14 @@ package main;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Faruk
@@ -37,7 +38,7 @@ public class MainFrame extends javax.swing.JFrame {
         stockButton = new javax.swing.JButton();
         ordersButton = new javax.swing.JButton();
         materialsButton = new javax.swing.JButton();
-        paymentsButton = new javax.swing.JButton();
+        salesButton = new javax.swing.JButton();
         containerPanel = new javax.swing.JPanel();
         productionsPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -64,8 +65,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addSupliersNvg = new javax.swing.JButton();
+        editSupliersNvg = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -90,7 +91,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        paymentsPanel = new javax.swing.JPanel();
+        salesPanel = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
@@ -108,6 +109,16 @@ public class MainFrame extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        addSuppliersPanel = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        addSupliersButton = new javax.swing.JButton();
+        backSupliersButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,7 +158,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        paymentsButton.setText("Pembelian Pupuk");
+        salesButton.setText("Pembelian Pupuk");
+        salesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -160,7 +176,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(materialsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(paymentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         menuPanelLayout.setVerticalGroup(
@@ -176,7 +192,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(materialsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(paymentsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(salesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -377,14 +393,19 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable3);
 
-        jButton1.setText("Tambah");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addSupliersNvg.setText("Tambah");
+        addSupliersNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addSupliersNvgActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Ubah");
+        editSupliersNvg.setText("Ubah");
+        editSupliersNvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSupliersNvgActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Hapus");
 
@@ -407,9 +428,9 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(suppliersPanelLayout.createSequentialGroup()
                             .addComponent(jButton3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton2)
+                            .addComponent(editSupliersNvg)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton1))
+                            .addComponent(addSupliersNvg))
                         .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -432,8 +453,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(addSupliersNvg)
+                    .addComponent(editSupliersNvg)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -446,7 +467,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(44, 44, 44))
         );
 
-        containerPanel.add(suppliersPanel, "providersCard");
+        containerPanel.add(suppliersPanel, "suppliersCard");
 
         jLabel2.setText("Stok");
 
@@ -624,35 +645,35 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton15.setText("Hapus");
 
-        javax.swing.GroupLayout paymentsPanelLayout = new javax.swing.GroupLayout(paymentsPanel);
-        paymentsPanel.setLayout(paymentsPanelLayout);
-        paymentsPanelLayout.setHorizontalGroup(
-            paymentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paymentsPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout salesPanelLayout = new javax.swing.GroupLayout(salesPanel);
+        salesPanel.setLayout(salesPanelLayout);
+        salesPanelLayout.setHorizontalGroup(
+            salesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(salesPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(paymentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(paymentsPanelLayout.createSequentialGroup()
+                .addGroup(salesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(salesPanelLayout.createSequentialGroup()
                         .addComponent(jButton15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton13))
-                    .addGroup(paymentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(salesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel30)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
-        paymentsPanelLayout.setVerticalGroup(
-            paymentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paymentsPanelLayout.createSequentialGroup()
+        salesPanelLayout.setVerticalGroup(
+            salesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(salesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel30)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(paymentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(salesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton13)
                     .addComponent(jButton14)
                     .addComponent(jButton15))
@@ -663,7 +684,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(57, 57, 57))
         );
 
-        containerPanel.add(paymentsPanel, "card6");
+        containerPanel.add(salesPanel, "salesCard");
 
         jLabel27.setText("Stok Bahan");
 
@@ -732,6 +753,78 @@ public class MainFrame extends javax.swing.JFrame {
 
         containerPanel.add(materialsPanel, "materialsCard");
 
+        jLabel33.setText("Tambah Pemasok Bahan");
+
+        jLabel34.setText("Nama");
+
+        jLabel35.setText("Alamat");
+
+        jLabel36.setText("Kontak");
+
+        addSupliersButton.setText("Tambah");
+        addSupliersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSupliersButtonActionPerformed(evt);
+            }
+        });
+
+        backSupliersButton.setText("Batal");
+        backSupliersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backSupliersButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addSuppliersPanelLayout = new javax.swing.GroupLayout(addSuppliersPanel);
+        addSuppliersPanel.setLayout(addSuppliersPanelLayout);
+        addSuppliersPanelLayout.setHorizontalGroup(
+            addSuppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addSuppliersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addSuppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField2)
+                    .addGroup(addSuppliersPanelLayout.createSequentialGroup()
+                        .addGroup(addSuppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTextField3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addSuppliersPanelLayout.createSequentialGroup()
+                        .addGap(0, 478, Short.MAX_VALUE)
+                        .addComponent(addSupliersButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(backSupliersButton)))
+                .addContainerGap())
+        );
+        addSuppliersPanelLayout.setVerticalGroup(
+            addSuppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addSuppliersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel33)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(addSuppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addSupliersButton)
+                    .addComponent(backSupliersButton))
+                .addContainerGap(237, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(addSuppliersPanel, "addSupliersCard");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -751,37 +844,64 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void productionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productionsButtonActionPerformed
-        CardLayout cl = (CardLayout)(containerPanel.getLayout());
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "productionsCard");
     }//GEN-LAST:event_productionsButtonActionPerformed
 
     private void suppliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppliersButtonActionPerformed
-        CardLayout cl = (CardLayout)(containerPanel.getLayout());
-        cl.show(containerPanel, "providersCard");
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
+        cl.show(containerPanel, "suppliersCard");
     }//GEN-LAST:event_suppliersButtonActionPerformed
 
     private void stockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockButtonActionPerformed
-        CardLayout cl = (CardLayout)(containerPanel.getLayout());
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "stockCard");
     }//GEN-LAST:event_stockButtonActionPerformed
 
     private void ordersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersButtonActionPerformed
-        CardLayout cl = (CardLayout)(containerPanel.getLayout());
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "ordersCard");
     }//GEN-LAST:event_ordersButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void addSupliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupliersNvgActionPerformed
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
+        cl.show(containerPanel, "addSupliersCard");
+    }//GEN-LAST:event_addSupliersNvgActionPerformed
 
     private void materialsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialsButtonActionPerformed
-        CardLayout cl = (CardLayout)(containerPanel.getLayout());
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "materialsCard");
     }//GEN-LAST:event_materialsButtonActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void salesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesButtonActionPerformed
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
+        cl.show(containerPanel, "salesCard");
+    }//GEN-LAST:event_salesButtonActionPerformed
+
+    private void addSupliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupliersButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addSupliersButtonActionPerformed
+
+    private void backSupliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backSupliersButtonActionPerformed
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
+        cl.show(containerPanel, "suppliersCard");
+    }//GEN-LAST:event_backSupliersButtonActionPerformed
+
+    private void editSupliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupliersNvgActionPerformed
+        JTextField name = new JTextField();
+        JTextField address = new JTextField();
+        JTextField contact = new JTextField();
+        Object[] message = {
+            "Nama: ", name,
+            "Alamat: ", address,
+            "Kontak:", contact
+        };
+        int option = JOptionPane.showConfirmDialog(null, message, "Ubah Pemasok", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_editSupliersNvgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -819,15 +939,18 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addSupliersButton;
+    private javax.swing.JButton addSupliersNvg;
+    private javax.swing.JPanel addSuppliersPanel;
+    private javax.swing.JButton backSupliersButton;
     private javax.swing.JPanel containerPanel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton editSupliersNvg;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -861,6 +984,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -883,15 +1010,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton materialsButton;
     private javax.swing.JPanel materialsPanel;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton ordersButton;
     private javax.swing.JPanel ordersPanel;
-    private javax.swing.JButton paymentsButton;
-    private javax.swing.JPanel paymentsPanel;
     private javax.swing.JButton productionsButton;
     private javax.swing.JPanel productionsPanel;
+    private javax.swing.JButton salesButton;
+    private javax.swing.JPanel salesPanel;
     private javax.swing.JButton stockButton;
     private javax.swing.JPanel stockPanel;
     private javax.swing.JButton suppliersButton;
