@@ -84,8 +84,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        addOrdersNvg = new javax.swing.JButton();
+        editOrdersNvg = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -118,7 +118,19 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         addSupliersButton = new javax.swing.JButton();
-        backSupliersButton = new javax.swing.JButton();
+        cancelSuppliersButton = new javax.swing.JButton();
+        addOrdersPanel = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        cancelOrdersButton = new javax.swing.JButton();
+        addOrdersButton = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,10 +186,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(suppliersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(stockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(materialsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(salesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(salesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,14 +557,19 @@ public class MainFrame extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jTable4);
 
-        jButton8.setText("Tambah");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        addOrdersNvg.setText("Tambah");
+        addOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                addOrdersNvgActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Ubah");
+        editOrdersNvg.setText("Ubah");
+        editOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editOrdersNvgActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Hapus");
 
@@ -577,9 +591,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(ordersPanelLayout.createSequentialGroup()
                         .addComponent(jButton10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton9)
+                        .addComponent(editOrdersNvg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton8))
+                        .addComponent(addOrdersNvg))
                     .addGroup(ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -602,8 +616,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9)
+                    .addComponent(addOrdersNvg)
+                    .addComponent(editOrdersNvg)
                     .addComponent(jButton10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,10 +782,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        backSupliersButton.setText("Batal");
-        backSupliersButton.addActionListener(new java.awt.event.ActionListener() {
+        cancelSuppliersButton.setText("Batal");
+        cancelSuppliersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backSupliersButtonActionPerformed(evt);
+                cancelSuppliersButtonActionPerformed(evt);
             }
         });
 
@@ -796,7 +810,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(0, 478, Short.MAX_VALUE)
                         .addComponent(addSupliersButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(backSupliersButton)))
+                        .addComponent(cancelSuppliersButton)))
                 .addContainerGap())
         );
         addSuppliersPanelLayout.setVerticalGroup(
@@ -819,11 +833,86 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(addSuppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addSupliersButton)
-                    .addComponent(backSupliersButton))
+                    .addComponent(cancelSuppliersButton))
                 .addContainerGap(237, Short.MAX_VALUE))
         );
 
         containerPanel.add(addSuppliersPanel, "addSupliersCard");
+
+        jLabel37.setText("Tambah Pemesanan Pupuk");
+
+        cancelOrdersButton.setText("Batal");
+        cancelOrdersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelOrdersButtonActionPerformed(evt);
+            }
+        });
+
+        addOrdersButton.setText("Tambah");
+
+        jLabel38.setText("Nama");
+
+        jLabel39.setText("Kontak");
+
+        jLabel40.setText("Berat (Kg)");
+
+        jLabel41.setText("Tanggal");
+
+        javax.swing.GroupLayout addOrdersPanelLayout = new javax.swing.GroupLayout(addOrdersPanel);
+        addOrdersPanel.setLayout(addOrdersPanelLayout);
+        addOrdersPanelLayout.setHorizontalGroup(
+            addOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addOrdersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addOrdersPanelLayout.createSequentialGroup()
+                        .addGap(0, 478, Short.MAX_VALUE)
+                        .addComponent(addOrdersButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelOrdersButton))
+                    .addComponent(jTextField6)
+                    .addComponent(jTextField4)
+                    .addComponent(jTextField5)
+                    .addGroup(addOrdersPanelLayout.createSequentialGroup()
+                        .addGroup(addOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel37)
+                            .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTextField7))
+                .addContainerGap())
+        );
+        addOrdersPanelLayout.setVerticalGroup(
+            addOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addOrdersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel37)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(addOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addOrdersButton)
+                    .addComponent(cancelOrdersButton))
+                .addContainerGap(201, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(addOrdersPanel, "addOrdersCard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -873,9 +962,10 @@ public class MainFrame extends javax.swing.JFrame {
         cl.show(containerPanel, "materialsCard");
     }//GEN-LAST:event_materialsButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void addOrdersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOrdersNvgActionPerformed
+       CardLayout cl = (CardLayout) (containerPanel.getLayout());
+        cl.show(containerPanel, "addOrdersCard");
+    }//GEN-LAST:event_addOrdersNvgActionPerformed
 
     private void salesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
@@ -886,10 +976,10 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addSupliersButtonActionPerformed
 
-    private void backSupliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backSupliersButtonActionPerformed
+    private void cancelSuppliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelSuppliersButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "suppliersCard");
-    }//GEN-LAST:event_backSupliersButtonActionPerformed
+    }//GEN-LAST:event_cancelSuppliersButtonActionPerformed
 
     private void editSupliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupliersNvgActionPerformed
         JTextField name = new JTextField();
@@ -902,6 +992,25 @@ public class MainFrame extends javax.swing.JFrame {
         };
         int option = JOptionPane.showConfirmDialog(null, message, "Ubah Pemasok", JOptionPane.OK_CANCEL_OPTION);
     }//GEN-LAST:event_editSupliersNvgActionPerformed
+
+    private void cancelOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrdersButtonActionPerformed
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
+        cl.show(containerPanel, "ordersCard");
+    }//GEN-LAST:event_cancelOrdersButtonActionPerformed
+
+    private void editOrdersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrdersNvgActionPerformed
+        JTextField name = new JTextField();
+        JTextField weight = new JTextField();
+        JTextField contact = new JTextField();
+        JTextField date = new JTextField();
+        Object[] message = {
+            "Nama: ", name,
+            "Kontak: ", contact,
+            "Berat:", weight,
+            "Tanggal:",date
+        };
+        int option = JOptionPane.showConfirmDialog(null, message, "Ubah Pesanan", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_editOrdersNvgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -939,11 +1048,16 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addOrdersButton;
+    private javax.swing.JButton addOrdersNvg;
+    private javax.swing.JPanel addOrdersPanel;
     private javax.swing.JButton addSupliersButton;
     private javax.swing.JButton addSupliersNvg;
     private javax.swing.JPanel addSuppliersPanel;
-    private javax.swing.JButton backSupliersButton;
+    private javax.swing.JButton cancelOrdersButton;
+    private javax.swing.JButton cancelSuppliersButton;
     private javax.swing.JPanel containerPanel;
+    private javax.swing.JButton editOrdersNvg;
     private javax.swing.JButton editSupliersNvg;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -956,8 +1070,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -988,7 +1100,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1013,6 +1130,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JButton materialsButton;
     private javax.swing.JPanel materialsPanel;
     private javax.swing.JPanel menuPanel;
