@@ -5,6 +5,7 @@
  */
 package main;
 
+import models.Order;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
