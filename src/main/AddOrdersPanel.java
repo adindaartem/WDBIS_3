@@ -5,18 +5,21 @@
  */
 package main;
 
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import java.awt.CardLayout;
+import models.Order;
 
 /**
  *
  * @author Faruk
  */
 public class AddOrdersPanel extends javax.swing.JPanel {
-
+    private final DatePickerSettings dateSettings = new DatePickerSettings();
     /**
      * Creates new form AddOrdersPanel
      */
     public AddOrdersPanel() {
+        dateSettings.setFormatForDatesCommonEra("yyyy-MM-dd");
         initComponents();
     }
 
@@ -30,16 +33,17 @@ public class AddOrdersPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel41 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         cancelOrdersButton = new javax.swing.JButton();
         addOrdersButton = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        nameTF = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        contactTF = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        weightTF = new javax.swing.JTextField();
+        datePick = new com.github.lgooddatepicker.components.DatePicker(
+            dateSettings);
 
         jLabel41.setText("Tanggal");
 
@@ -53,6 +57,11 @@ public class AddOrdersPanel extends javax.swing.JPanel {
         });
 
         addOrdersButton.setText("Tambah");
+        addOrdersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addOrdersButtonActionPerformed(evt);
+            }
+        });
 
         jLabel38.setText("Nama");
 
@@ -67,23 +76,23 @@ public class AddOrdersPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 404, Short.MAX_VALUE)
+                    .addComponent(weightTF)
+                    .addComponent(nameTF)
+                    .addComponent(contactTF)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(addOrdersButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelOrdersButton))
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel37)
                             .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel40))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField7))
+                            .addComponent(jLabel40)
+                            .addComponent(datePick, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 292, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -94,19 +103,19 @@ public class AddOrdersPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel38)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contactTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel40)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(weightTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(datePick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addOrdersButton)
@@ -118,20 +127,31 @@ public class AddOrdersPanel extends javax.swing.JPanel {
     private void cancelOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrdersButtonActionPerformed
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "ordersCard");
+        Order.getAll();
     }//GEN-LAST:event_cancelOrdersButtonActionPerformed
+
+    private void addOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOrdersButtonActionPerformed
+        String name = nameTF.getText();
+        String contact = contactTF.getText();
+        String weight = weightTF.getText();
+        String date = datePick.getText();
+        
+        Order.create(name, date, contact, weight);
+        cancelOrdersButtonActionPerformed(evt);
+    }//GEN-LAST:event_addOrdersButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addOrdersButton;
     private javax.swing.JButton cancelOrdersButton;
+    private javax.swing.JTextField contactTF;
+    private com.github.lgooddatepicker.components.DatePicker datePick;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField nameTF;
+    private javax.swing.JTextField weightTF;
     // End of variables declaration//GEN-END:variables
 }

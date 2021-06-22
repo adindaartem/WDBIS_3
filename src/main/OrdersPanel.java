@@ -5,6 +5,8 @@
  */
 package main;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import models.Order;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -14,15 +16,15 @@ import javax.swing.JTextField;
  *
  * @author Faruk
  */
-public class OrderPanel extends javax.swing.JPanel {
+public class OrdersPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form OrderPanel
      */
-    public OrderPanel() {
+    public OrdersPanel() {
         initComponents();
-        Order.getAll(ordersTable);
-        ordersTable.setRowSelectionInterval(0, 0);
+        Order.getAll();
+//        ordersTable.setRowSelectionInterval(0, 0);
     }
 
     /**
@@ -35,8 +37,8 @@ public class OrderPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         addOrdersNvg = new javax.swing.JButton();
-        editOrdersNvg2 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        editOrdersNvg = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -52,14 +54,19 @@ public class OrderPanel extends javax.swing.JPanel {
             }
         });
 
-        editOrdersNvg2.setText("Ubah");
-        editOrdersNvg2.addActionListener(new java.awt.event.ActionListener() {
+        editOrdersNvg.setText("Ubah");
+        editOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editOrdersNvg2ActionPerformed(evt);
+                editOrdersNvgActionPerformed(evt);
             }
         });
 
-        jButton10.setText("Hapus");
+        deleteButton.setText("Hapus");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         jLabel19.setText("Info");
 
@@ -89,9 +96,9 @@ public class OrderPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton10)
+                        .addComponent(deleteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(editOrdersNvg2)
+                        .addComponent(editOrdersNvg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addOrdersNvg))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,8 +124,8 @@ public class OrderPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addOrdersNvg)
-                    .addComponent(editOrdersNvg2)
-                    .addComponent(jButton10))
+                    .addComponent(editOrdersNvg)
+                    .addComponent(deleteButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -138,33 +145,56 @@ public class OrderPanel extends javax.swing.JPanel {
         cl.show(MainFrame.containerPanel, "addOrdersCard");
     }//GEN-LAST:event_addOrdersNvgActionPerformed
 
-    private void editOrdersNvg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrdersNvg2ActionPerformed
+    private void editOrdersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrdersNvgActionPerformed
+        String id = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 0).toString();
+        String dateVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 1).toString();
+        String nameVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 2).toString();
+        String contactVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 3).toString();
+        String weightVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 4).toString();
+        
+        
+        DatePickerSettings dateSettings = new DatePickerSettings();
+        dateSettings.setFormatForDatesCommonEra("yyyy-MM-dd");
         JTextField name = new JTextField();
         JTextField weight = new JTextField();
         JTextField contact = new JTextField();
-        JTextField date = new JTextField();
+        DatePicker datePick = new DatePicker(dateSettings);
+        
+        name.setText(nameVal);
+        datePick.setText(dateVal);
+        contact.setText(contactVal);
+        weight.setText(weightVal);
+        
         Object[] message = {
-            "Nama: ", name,
-            "Kontak: ", contact,
-            "Berat:", weight,
-            "Tanggal:",date
+            "Nama", name,
+            "Kontak", contact,
+            "Berat", weight,
+            "Tanggal", datePick
         };
+        
         int option = JOptionPane.showConfirmDialog(null, message, "Ubah Pesanan", JOptionPane.OK_CANCEL_OPTION);
-    }//GEN-LAST:event_editOrdersNvg2ActionPerformed
+        
+        Order.update(id, name.getText(), datePick.getText(), contact.getText(), weight.getText());
+        Order.getAll();
+    }//GEN-LAST:event_editOrdersNvgActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        String id = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 0).toString();
+        Order.delete(id);
+        Order.getAll();
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addOrdersNvg;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton editOrdersNvg;
-    private javax.swing.JButton editOrdersNvg1;
-    private javax.swing.JButton editOrdersNvg2;
-    private javax.swing.JButton jButton10;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable ordersTable;
+    public static javax.swing.JTable ordersTable;
     // End of variables declaration//GEN-END:variables
 }

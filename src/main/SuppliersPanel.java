@@ -21,8 +21,7 @@ public class SuppliersPanel extends javax.swing.JPanel {
      */
     public SuppliersPanel() {
         initComponents();
-        Supplier.getAll(SuppliersPanel.suppliersTable);
-        SuppliersPanel.suppliersTable.setRowSelectionInterval(0, 0);
+        Supplier.getAll();
     }
 
     /**
@@ -160,8 +159,8 @@ public class SuppliersPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addSupliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupliersNvgActionPerformed
-//        CardLayout cl = (CardLayout) (containerPanel.getLayout());
-//        cl.show(this., "addSupliersCard");
+        CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
+        cl.show(MainFrame.containerPanel, "addSupliersCard");
     }//GEN-LAST:event_addSupliersNvgActionPerformed
 
     private void editSupliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupliersNvgActionPerformed
@@ -189,13 +188,13 @@ public class SuppliersPanel extends javax.swing.JPanel {
             Supplier.update(id, name.getText(), address.getText(), contact.getText());
         }
 
-        Supplier.getAll(suppliersTable);
+        Supplier.getAll();
     }//GEN-LAST:event_editSupliersNvgActionPerformed
 
     private void deleteSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupplierButtonActionPerformed
         String id = suppliersTable.getModel().getValueAt(suppliersTable.getSelectedRow(), 0).toString();
         Supplier.delete(id);
-        Supplier.getAll(suppliersTable);
+        Supplier.getAll();
     }//GEN-LAST:event_deleteSupplierButtonActionPerformed
 
 

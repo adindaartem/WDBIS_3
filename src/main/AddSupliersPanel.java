@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package main;
+import models.Supplier;
 
 import java.awt.CardLayout;
 
@@ -30,12 +31,12 @@ public class AddSupliersPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel33 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        address = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        contact = new javax.swing.JTextField();
         addSupliersButton = new javax.swing.JButton();
         cancelSuppliersButton = new javax.swing.JButton();
 
@@ -68,8 +69,8 @@ public class AddSupliersPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
+                    .addComponent(name)
+                    .addComponent(address)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel33)
@@ -77,7 +78,7 @@ public class AddSupliersPanel extends javax.swing.JPanel {
                             .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField3)
+                    .addComponent(contact)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 430, Short.MAX_VALUE)
                         .addComponent(addSupliersButton)
@@ -93,15 +94,15 @@ public class AddSupliersPanel extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel34)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel35)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel36)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addSupliersButton)
@@ -111,7 +112,9 @@ public class AddSupliersPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addSupliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupliersButtonActionPerformed
-        // TODO add your handling code here:
+        Supplier.create(name.getText(), address.getText(), contact.getText());
+        Supplier.getAll();
+        cancelSuppliersButtonActionPerformed(evt);
     }//GEN-LAST:event_addSupliersButtonActionPerformed
 
     private void cancelSuppliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelSuppliersButtonActionPerformed
@@ -122,13 +125,13 @@ public class AddSupliersPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSupliersButton;
+    private javax.swing.JTextField address;
     private javax.swing.JButton cancelSuppliersButton;
+    private javax.swing.JTextField contact;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField name;
     // End of variables declaration//GEN-END:variables
 }

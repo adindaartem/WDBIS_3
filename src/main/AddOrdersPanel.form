@@ -16,29 +16,29 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="404" max="32767" attributes="0"/>
+                  <Component id="weightTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="nameTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="contactTF" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="addOrdersButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cancelOrdersButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jTextField6" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel38" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="jLabel39" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="jLabel41" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="jLabel40" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="datePick" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="292" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -52,19 +52,19 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
+              <Component id="nameTF" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
+              <Component id="contactTF" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
+              <Component id="weightTF" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField7" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="datePick" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addOrdersButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -80,8 +80,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Tanggal"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField7">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel37">
       <Properties>
@@ -100,27 +98,35 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Tambah"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addOrdersButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel38">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nama"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="nameTF">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel39">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kontak"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="contactTF">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel40">
       <Properties>
         <Property name="text" type="java.lang.String" value="Berat (Kg)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField6">
+    <Component class="javax.swing.JTextField" name="weightTF">
+    </Component>
+    <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePick">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DatePicker(&#xa;    dateSettings)"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

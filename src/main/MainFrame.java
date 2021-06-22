@@ -1,9 +1,7 @@
 package main;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.CardLayout;
-import java.awt.Color;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -47,7 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
         stock = new javax.swing.JPanel();
         stockPanel = new main.StockPanel();
         orders = new javax.swing.JPanel();
-        orderPanel = new main.OrderPanel();
+        orderPanel = new main.OrdersPanel();
         sales = new javax.swing.JPanel();
         salesPanel = new main.SalesPanel();
         materials = new javax.swing.JPanel();
@@ -139,15 +137,15 @@ public class MainFrame extends javax.swing.JFrame {
         productionsLayout.setHorizontalGroup(
             productionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(productionsLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(productionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(productionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                .addContainerGap())
         );
         productionsLayout.setVerticalGroup(
             productionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productionsLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(productionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(productionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE))
         );
 
         containerPanel.add(productions, "productionsCard");
@@ -362,21 +360,16 @@ public class MainFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Windows".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+            javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception ex) {
+           
+        } 
         //</editor-fold>
 
         /* Create and display the form */
@@ -399,7 +392,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton materialsButton;
     private main.MaterialsPanel materialsPanel;
     private javax.swing.JPanel menuPanel;
-    private main.OrderPanel orderPanel;
+    private main.OrdersPanel orderPanel;
     private javax.swing.JPanel orders;
     private javax.swing.JButton ordersButton;
     private javax.swing.JPanel productions;
