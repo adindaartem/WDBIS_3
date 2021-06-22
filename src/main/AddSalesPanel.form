@@ -21,41 +21,41 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="538" pref="596" max="32767" attributes="0"/>
+                      <EmptySpace min="538" pref="563" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextField8" alignment="0" max="32767" attributes="0"/>
+                          <Component id="totalPayment" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="addSalesButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cancelSalesButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel42" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel43" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="orderList" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel45" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel48" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Component id="nameLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel46" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel50" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="weightLabel" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jLabel51" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="datePicker" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -74,11 +74,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+              <Component id="orderList" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+              <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel46" alignment="0" max="32767" attributes="0"/>
@@ -86,21 +86,21 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="dateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField8" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="datePicker" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField9" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="totalPayment" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cancelSalesButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addSalesButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
@@ -108,26 +108,23 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="orderList">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="orderListItemStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField8">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel44">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tanggal"/>
+        <Property name="text" type="java.lang.String" value="Tanggal Bayar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel45">
@@ -145,17 +142,17 @@
         <Property name="text" type="java.lang.String" value="Berat Pesanan"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel48">
+    <Component class="javax.swing.JLabel" name="nameLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Faruk"/>
+        <Property name="text" type="java.lang.String" value="Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel49">
+    <Component class="javax.swing.JLabel" name="dateLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="21/04/2021"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel50">
+    <Component class="javax.swing.JLabel" name="weightLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="50 Kg"/>
       </Properties>
@@ -178,17 +175,25 @@
         <Property name="text" type="java.lang.String" value="Pesanan"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="addSalesButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tambah"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addSalesButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel51">
       <Properties>
         <Property name="text" type="java.lang.String" value="Total Bayar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField9">
+    <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePicker">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.github.lgooddatepicker.components.DatePicker(dateSettings)"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="totalPayment">
     </Component>
   </SubComponents>
 </Form>

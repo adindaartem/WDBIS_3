@@ -10,6 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 import main.OrdersPanel;
 
@@ -18,19 +21,22 @@ import main.OrdersPanel;
  * @author Faruk
  */
 public class Order extends DB {
+
     public static void getAll() {
         DefaultTableModel base = new DefaultTableModel();
         base.addColumn("id");
+        base.addColumn("Kode");
         base.addColumn("Tanggal");
         base.addColumn("Nama");
         base.addColumn("Kontak");
         base.addColumn("Berat Pupuk (kg)");
         try {
             Statement query = connect().createStatement();
-            ResultSet result = query.executeQuery("SELECT * FROM orders");
-            while (result.next()) {                
-                base.addRow(new Object[] {
+            ResultSet result = query.executeQuery("SELECT * FROM orders WHERE id NOT IN (SELECT order_id FROM sales)");
+            while (result.next()) {
+                base.addRow(new Object[]{
                     result.getString("id"),
+                    result.getString("code"),
                     result.getString("date"),
                     result.getString("name"),
                     result.getString("contact"),
@@ -43,21 +49,32 @@ public class Order extends DB {
             e.printStackTrace();
         }
     }
-    
+
     public static void create(String name, String date, String contact, String weight) {
         try {
+            String generatedColumns[] = {"ID"};
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("INSERT INTO orders (name,date,contact,weight) VALUES(?,?,?,?)");
+            PreparedStatement statement = query.prepareStatement("INSERT INTO orders (name,date,contact,weight) VALUES(?,?,?,?)", generatedColumns);
             statement.setString(1, name);
             statement.setString(2, date);
             statement.setString(3, contact);
             statement.setString(4, weight);
             statement.executeUpdate();
+
+            ResultSet rs = statement.getGeneratedKeys();
+
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                PreparedStatement statementUp = query.prepareStatement("UPDATE orders SET code=CONCAT('OR',LPAD(?, 4, '0')) WHERE ID=?");
+                statementUp.setString(1, Integer.toString(id));
+                statementUp.setString(2, Integer.toString(id));
+                statementUp.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     public static void update(String id, String name, String date, String contact, String weight) {
         try {
             Connection query = connect();
@@ -68,21 +85,58 @@ public class Order extends DB {
             statement.setString(4, weight);
             statement.setString(5, id);
             statement.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     public static void delete(String id) {
         try {
             Connection query = connect();
             PreparedStatement statement = query.prepareStatement("DELETE FROM orders WHERE ID=? LIMIT 1");
             statement.setString(1, id);
             statement.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public static Map getOrderByCode(String code) {
+        Map<String,String> orders = new HashMap<>();  
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT * FROM orders WHERE code = ?");
+            statement.setString(1, code);
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                orders.put("id", rs.getString("id"));
+                orders.put("name", rs.getString("name"));
+                orders.put("weight", rs.getString("weight"));
+                orders.put("date", rs.getString("date"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return orders;
+    }
+    
+    public static ArrayList getCodes() {
+        ArrayList<String> codes = new ArrayList<String>();
+        try {
+            Statement query = connect().createStatement();
+            ResultSet result = query.executeQuery("SELECT code FROM orders WHERE id NOT IN (SELECT order_id FROM sales) ");
+            while (result.next()) {
+                codes.add(result.getString("code"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return codes;
     }
 }

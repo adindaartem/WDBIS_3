@@ -5,19 +5,26 @@
  */
 package main;
 
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import java.awt.CardLayout;
+import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
+import models.Order;
+import models.Sales;
 
 /**
  *
  * @author Faruk
  */
 public class AddSalesPanel extends javax.swing.JPanel {
-
+    private final DatePickerSettings dateSettings = new DatePickerSettings();
     /**
      * Creates new form AddSalesPanel
      */
     public AddSalesPanel() {
+        dateSettings.setFormatForDatesCommonEra("yyyy-MM-dd");
         initComponents();
+        orderList.setModel(new DefaultComboBoxModel(Order.getCodes().toArray()));
     }
 
     /**
@@ -29,25 +36,29 @@ public class AddSalesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField8 = new javax.swing.JTextField();
+        orderList = new javax.swing.JComboBox<>();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        dateLabel = new javax.swing.JLabel();
+        weightLabel = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         cancelSalesButton = new javax.swing.JButton();
         jLabel43 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        addSalesButton = new javax.swing.JButton();
         jLabel51 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        datePicker = new com.github.lgooddatepicker.components.DatePicker(dateSettings);
+        totalPayment = new javax.swing.JTextField();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        orderList.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                orderListItemStateChanged(evt);
+            }
+        });
 
-        jLabel44.setText("Tanggal");
+        jLabel44.setText("Tanggal Bayar");
 
         jLabel45.setText("Nama Pemesan");
 
@@ -55,11 +66,11 @@ public class AddSalesPanel extends javax.swing.JPanel {
 
         jLabel47.setText("Berat Pesanan");
 
-        jLabel48.setText("Faruk");
+        nameLabel.setText("Name");
 
-        jLabel49.setText("21/04/2021");
+        dateLabel.setText("21/04/2021");
 
-        jLabel50.setText("50 Kg");
+        weightLabel.setText("50 Kg");
 
         jLabel42.setText("Tambah Penjualan Pupuk");
 
@@ -72,7 +83,12 @@ public class AddSalesPanel extends javax.swing.JPanel {
 
         jLabel43.setText("Pesanan");
 
-        jButton2.setText("Tambah");
+        addSalesButton.setText("Tambah");
+        addSalesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSalesButtonActionPerformed(evt);
+            }
+        });
 
         jLabel51.setText("Total Bayar");
 
@@ -85,14 +101,13 @@ public class AddSalesPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel44)
-                        .addGap(538, 596, Short.MAX_VALUE))
+                        .addGap(538, 563, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField9)
-                            .addComponent(jTextField8)
+                            .addComponent(totalPayment)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(addSalesButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cancelSalesButton))
                             .addGroup(layout.createSequentialGroup()
@@ -100,19 +115,20 @@ public class AddSalesPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(orderList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel49))
+                                            .addComponent(dateLabel))
                                         .addGap(45, 45, 45)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel47)
-                                            .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(weightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -124,31 +140,31 @@ public class AddSalesPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel43)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(orderList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel45)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel48)
+                .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel49)
-                    .addComponent(jLabel50))
+                    .addComponent(dateLabel)
+                    .addComponent(weightLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel44)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel51)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(totalPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelSalesButton)
-                    .addComponent(jButton2))
+                    .addComponent(addSalesButton))
                 .addGap(32, 32, 32))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -156,24 +172,40 @@ public class AddSalesPanel extends javax.swing.JPanel {
     private void cancelSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelSalesButtonActionPerformed
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "salesCard");
+        Sales.getAll();
     }//GEN-LAST:event_cancelSalesButtonActionPerformed
+
+    private void orderListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_orderListItemStateChanged
+        Map<String,String> order = Order.getOrderByCode(evt.getItem().toString());
+        nameLabel.setText(order.get("name"));
+        weightLabel.setText(order.get("weight") + " kg");
+        dateLabel.setText(order.get("date"));
+    }//GEN-LAST:event_orderListItemStateChanged
+
+    private void addSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSalesButtonActionPerformed
+        String date = datePicker.getText();
+        String total = totalPayment.getText();
+        String code = orderList.getSelectedItem().toString();
+        Sales.create(code, date, total);
+        cancelSalesButtonActionPerformed(evt);
+    }//GEN-LAST:event_addSalesButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addSalesButton;
     private javax.swing.JButton cancelSalesButton;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel dateLabel;
+    private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel nameLabel;
+    public static javax.swing.JComboBox<String> orderList;
+    private javax.swing.JTextField totalPayment;
+    private javax.swing.JLabel weightLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,21 +5,31 @@
  */
 package main;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import java.awt.CardLayout;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import models.Order;
+import models.Sales;
 
 /**
  *
  * @author Faruk
  */
 public class SalesPanel extends javax.swing.JPanel {
+    private final DatePickerSettings dateSettings = new DatePickerSettings();
+    private final DatePicker date; 
 
     /**
      * Creates new form SalesPanel
      */
     public SalesPanel() {
+        dateSettings.setFormatForDatesCommonEra("yyyy-MM-dd");
+        date = new DatePicker(dateSettings);
         initComponents();
+        Sales.getAll();
     }
 
     /**
@@ -35,10 +45,9 @@ public class SalesPanel extends javax.swing.JPanel {
         jLabel32 = new javax.swing.JLabel();
         addSalesNvg = new javax.swing.JButton();
         changeSalesNvg = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        salesTable = new javax.swing.JTable();
 
         jLabel31.setText("Info");
 
@@ -58,22 +67,17 @@ public class SalesPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton15.setText("Hapus");
-
         jLabel30.setText("Penjualan Pupuk");
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        salesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane7.setViewportView(jTable7);
+        jScrollPane7.setViewportView(salesTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -83,8 +87,6 @@ public class SalesPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(changeSalesNvg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addSalesNvg))
@@ -105,8 +107,7 @@ public class SalesPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addSalesNvg)
-                    .addComponent(changeSalesNvg)
-                    .addComponent(jButton15))
+                    .addComponent(changeSalesNvg))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,27 +119,35 @@ public class SalesPanel extends javax.swing.JPanel {
     private void addSalesNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSalesNvgActionPerformed
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "addSalesCard");
+        AddSalesPanel.orderList.setModel(new DefaultComboBoxModel(Order.getCodes().toArray()));
     }//GEN-LAST:event_addSalesNvgActionPerformed
 
     private void changeSalesNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeSalesNvgActionPerformed
+        String id = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 0).toString();
+        String totalVal = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 5).toString();
+        String dateVal = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 6).toString();
         JTextField total = new JTextField();
-        JTextField date = new JTextField();
+        
+        total.setText(totalVal);
+        date.setText(dateVal);
         Object[] message = {
-            "Tanggal: ", date,
-            "Total Bayar:",total
+            "Tanggal ", date,
+            "Total Bayar",total
         };
         int option = JOptionPane.showConfirmDialog(null, message, "Ubah Penjualan", JOptionPane.OK_CANCEL_OPTION);
+        
+        Sales.update(id, date.getText(), total.getText());
+        Sales.getAll();
     }//GEN-LAST:event_changeSalesNvgActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSalesNvg;
     private javax.swing.JButton changeSalesNvg;
-    private javax.swing.JButton jButton15;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable jTable7;
+    public static javax.swing.JTable salesTable;
     // End of variables declaration//GEN-END:variables
 }

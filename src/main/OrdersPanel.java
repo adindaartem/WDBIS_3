@@ -147,10 +147,10 @@ public class OrdersPanel extends javax.swing.JPanel {
 
     private void editOrdersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrdersNvgActionPerformed
         String id = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 0).toString();
-        String dateVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 1).toString();
-        String nameVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 2).toString();
-        String contactVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 3).toString();
-        String weightVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 4).toString();
+        String dateVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 2).toString();
+        String nameVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 3).toString();
+        String contactVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 4).toString();
+        String weightVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 5).toString();
         
         
         DatePickerSettings dateSettings = new DatePickerSettings();
@@ -168,7 +168,7 @@ public class OrdersPanel extends javax.swing.JPanel {
         Object[] message = {
             "Nama", name,
             "Kontak", contact,
-            "Berat", weight,
+            "Berat (kg)", weight,
             "Tanggal", datePick
         };
         
