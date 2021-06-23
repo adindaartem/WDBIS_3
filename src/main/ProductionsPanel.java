@@ -5,6 +5,8 @@
  */
 package main;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author Faruk
@@ -34,7 +36,7 @@ public class ProductionsPanel extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        addProductionsNvg = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -83,7 +85,12 @@ public class ProductionsPanel extends javax.swing.JPanel {
 
         jLabel5.setText("TANGGAL PRODUKSI");
 
-        jButton4.setText("Tambah");
+        addProductionsNvg.setText("Tambah");
+        addProductionsNvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProductionsNvgActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("BIAYA PRODUKSI");
 
@@ -142,7 +149,7 @@ public class ProductionsPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
+                        .addComponent(addProductionsNvg))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -195,7 +202,7 @@ public class ProductionsPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(addProductionsNvg)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
                 .addGap(53, 53, 53)
@@ -222,9 +229,14 @@ public class ProductionsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addProductionsNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductionsNvgActionPerformed
+        CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
+        cl.show(MainFrame.containerPanel, "addProductionsCard");
+    }//GEN-LAST:event_addProductionsNvgActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton addProductionsNvg;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel10;
