@@ -5,6 +5,10 @@
  */
 package main;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import models.Material;
+
 /**
  *
  * @author Faruk
@@ -16,6 +20,7 @@ public class MaterialsPanel extends javax.swing.JPanel {
      */
     public MaterialsPanel() {
         initComponents();
+        Material.getAll();
     }
 
     /**
@@ -30,27 +35,24 @@ public class MaterialsPanel extends javax.swing.JPanel {
         jLabel29 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        materialsTable = new javax.swing.JTable();
         jLabel28 = new javax.swing.JLabel();
+        editMaterialNvg = new javax.swing.JButton();
 
         jLabel29.setText("Lainnya");
 
         jLabel27.setText("Stok Bahan");
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane6.setViewportView(jTable6);
+        jScrollPane6.setViewportView(materialsTable);
 
         jLabel28.setText("Info");
+
+        editMaterialNvg.setText("Ubah");
+        editMaterialNvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editMaterialNvgActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -58,12 +60,14 @@ public class MaterialsPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel27)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(editMaterialNvg)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel27)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,20 +76,50 @@ public class MaterialsPanel extends javax.swing.JPanel {
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editMaterialNvg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
-                .addGap(54, 54, 54))
+                .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void editMaterialNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMaterialNvgActionPerformed
+        String id = materialsTable.getModel().getValueAt(materialsTable.getSelectedRow(), 0).toString();
+        String stockVal = materialsTable.getModel().getValueAt(materialsTable.getSelectedRow(), 2).toString();
+        String unitVal = materialsTable.getModel().getValueAt(materialsTable.getSelectedRow(), 3).toString();
+        String infoVal = materialsTable.getModel().getValueAt(materialsTable.getSelectedRow(), 5).toString();
+        
+        JTextField stock = new JTextField();
+        JTextField unit = new JTextField();
+        JTextField info = new JTextField();
+        
+        stock.setText(stockVal);
+        unit.setText(unitVal);
+        info.setText(infoVal);
+        
+        Object[] message = {
+            "Stok", stock,
+            "Unit", unit,
+            "Keterangan", info
+        };
+        
+        int option = JOptionPane.showConfirmDialog(null, message, "Ubah Material", JOptionPane.OK_CANCEL_OPTION);
+        
+        Material.update(id, info.getText(), stock.getText(), unit.getText());
+        Material.getAll();
+        
+    }//GEN-LAST:event_editMaterialNvgActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton editMaterialNvg;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable jTable6;
+    public static javax.swing.JTable materialsTable;
     // End of variables declaration//GEN-END:variables
 }
