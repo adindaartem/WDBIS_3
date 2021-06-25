@@ -62,6 +62,8 @@ public class MainFrame extends javax.swing.JFrame {
         addOrdersPanel = new main.AddOrdersPanel();
         addSales = new javax.swing.JPanel();
         addSalesPanel = new main.AddSalesPanel();
+        addProductions = new javax.swing.JPanel();
+        addProductionPanel = new main.AddProductionPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -135,7 +137,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(materialsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(salesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 214, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         containerPanel.setLayout(new java.awt.CardLayout());
@@ -146,7 +148,7 @@ public class MainFrame extends javax.swing.JFrame {
             productionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(productionsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(productionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                .addComponent(productionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
                 .addContainerGap())
         );
         productionsLayout.setVerticalGroup(
@@ -202,14 +204,14 @@ public class MainFrame extends javax.swing.JFrame {
             ordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ordersLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(orderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                .addComponent(orderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         ordersLayout.setVerticalGroup(
             ordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ordersLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(orderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(orderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -221,14 +223,14 @@ public class MainFrame extends javax.swing.JFrame {
             salesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(salesLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(salesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                .addComponent(salesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         salesLayout.setVerticalGroup(
             salesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(salesLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(salesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(salesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -240,14 +242,14 @@ public class MainFrame extends javax.swing.JFrame {
             materialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(materialsLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(materialsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                .addComponent(materialsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         materialsLayout.setVerticalGroup(
             materialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, materialsLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(materialsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(materialsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -259,14 +261,14 @@ public class MainFrame extends javax.swing.JFrame {
             addSuppliersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addSuppliersLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(addSupliersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                .addComponent(addSupliersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         addSuppliersLayout.setVerticalGroup(
             addSuppliersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addSuppliersLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(addSupliersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(addSupliersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -278,14 +280,14 @@ public class MainFrame extends javax.swing.JFrame {
             addOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addOrdersLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(addOrdersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                .addComponent(addOrdersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         addOrdersLayout.setVerticalGroup(
             addOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addOrdersLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(addOrdersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(addOrdersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -310,6 +312,25 @@ public class MainFrame extends javax.swing.JFrame {
 
         containerPanel.add(addSales, "addSalesCard");
 
+        javax.swing.GroupLayout addProductionsLayout = new javax.swing.GroupLayout(addProductions);
+        addProductions.setLayout(addProductionsLayout);
+        addProductionsLayout.setHorizontalGroup(
+            addProductionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addProductionsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addProductionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        addProductionsLayout.setVerticalGroup(
+            addProductionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addProductionsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addProductionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(addProductions, "addProductionsCard");
+
         jMenu1.setText("About");
         jMenuBar1.add(jMenu1);
 
@@ -327,7 +348,7 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(containerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(containerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -403,6 +424,8 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addOrders;
     private main.AddOrdersPanel addOrdersPanel;
+    private main.AddProductionPanel addProductionPanel;
+    private javax.swing.JPanel addProductions;
     private javax.swing.JPanel addSales;
     private main.AddSalesPanel addSalesPanel;
     private main.AddSupliersPanel addSupliersPanel;

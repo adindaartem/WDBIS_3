@@ -24,7 +24,6 @@ public class AddSalesPanel extends javax.swing.JPanel {
     public AddSalesPanel() {
         dateSettings.setFormatForDatesCommonEra("yyyy-MM-dd");
         initComponents();
-        orderList.setModel(new DefaultComboBoxModel(Order.getCodes().toArray()));
     }
 
     /**
