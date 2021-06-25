@@ -4,6 +4,10 @@ import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.CardLayout;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import models.Material;
+import models.Order;
+import models.Sales;
+import models.Supplier;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -337,26 +341,31 @@ public class MainFrame extends javax.swing.JFrame {
     private void suppliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppliersButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "suppliersCard");
+        Supplier.getAll();
     }//GEN-LAST:event_suppliersButtonActionPerformed
 
     private void stockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "stockCard");
+        
     }//GEN-LAST:event_stockButtonActionPerformed
 
     private void ordersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
-        cl.show(containerPanel, "ordersCard");
+        cl.show(containerPanel, "ordersCard");   
+        Order.getAll();
     }//GEN-LAST:event_ordersButtonActionPerformed
 
     private void materialsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialsButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "materialsCard");
+        Material.getAll();
     }//GEN-LAST:event_materialsButtonActionPerformed
 
     private void salesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "salesCard");
+        Sales.getAll();
     }//GEN-LAST:event_salesButtonActionPerformed
 
     /**

@@ -20,7 +20,6 @@ public class MaterialsPanel extends javax.swing.JPanel {
      */
     public MaterialsPanel() {
         initComponents();
-        Material.getAll();
     }
 
     /**

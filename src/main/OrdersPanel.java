@@ -23,7 +23,6 @@ public class OrdersPanel extends javax.swing.JPanel {
      */
     public OrdersPanel() {
         initComponents();
-        Order.getAll();
 //        ordersTable.setRowSelectionInterval(0, 0);
     }
 

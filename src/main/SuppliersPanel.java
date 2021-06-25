@@ -21,7 +21,6 @@ public class SuppliersPanel extends javax.swing.JPanel {
      */
     public SuppliersPanel() {
         initComponents();
-        Supplier.getAll();
     }
 
     /**

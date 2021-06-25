@@ -29,7 +29,6 @@ public class SalesPanel extends javax.swing.JPanel {
         dateSettings.setFormatForDatesCommonEra("yyyy-MM-dd");
         date = new DatePicker(dateSettings);
         initComponents();
-        Sales.getAll();
     }
 
     /**
