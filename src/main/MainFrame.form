@@ -458,7 +458,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="main.AddProductionPanel" name="addProductionPanel">
+            <Component class="main.AddProductionsPanel" name="addProductionPanel">
             </Component>
           </SubComponents>
         </Container>

@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 import main.MaterialsPanel;
 import static models.DB.connect;
@@ -29,8 +31,9 @@ public class Material extends DB {
         base.addColumn("Tipe");
         base.addColumn("Keterangan");
         try {
-            Statement query = connect().createStatement();
-            ResultSet result = query.executeQuery("SELECT * FROM materials");
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT * FROM materials");
+            ResultSet result = statement.executeQuery();
             while (result.next()) {
                 base.addRow(new Object[]{
                     result.getString("id"),
@@ -62,4 +65,34 @@ public class Material extends DB {
             e.printStackTrace();
         }
     }
+    
+    public static Map getStock() {
+        Map<Integer, String> materials = new HashMap<>();
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT id,total FROM materials");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                materials.put(result.getInt("id"), result.getString("total"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return materials;
+    }
+    
+    public static void updateStock(int id, int total) {
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("UPDATE materials SET total=? WHERE ID=?");
+            statement.setInt(1, total);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }

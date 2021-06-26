@@ -63,7 +63,7 @@ public class MainFrame extends javax.swing.JFrame {
         addSales = new javax.swing.JPanel();
         addSalesPanel = new main.AddSalesPanel();
         addProductions = new javax.swing.JPanel();
-        addProductionPanel = new main.AddProductionPanel();
+        addProductionPanel = new main.AddProductionsPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -424,7 +424,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addOrders;
     private main.AddOrdersPanel addOrdersPanel;
-    private main.AddProductionPanel addProductionPanel;
+    private main.AddProductionsPanel addProductionPanel;
     private javax.swing.JPanel addProductions;
     private javax.swing.JPanel addSales;
     private main.AddSalesPanel addSalesPanel;

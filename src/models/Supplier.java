@@ -11,13 +11,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import main.SuppliersPanel;
 
 /**
  *
  * @author Faruk
  */
-public class Supplier extends DB{
+public class Supplier extends DB {
 
     public static void getAll() {
         DefaultTableModel base = new DefaultTableModel();
@@ -26,23 +29,25 @@ public class Supplier extends DB{
         base.addColumn("Alamat");
         base.addColumn("Kontak");
         try {
-            Statement query = connect().createStatement();
-            ResultSet result = query.executeQuery("SELECT * FROM suppliers");
-            while (result.next()) {                
-                base.addRow(new Object[] {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT * FROM suppliers");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                base.addRow(new Object[]{
                     result.getString("id"),
                     result.getString("name"),
                     result.getString("address"),
                     result.getString("contact")
                 });
             }
-            
+
             SuppliersPanel.suppliersTable.setModel(base);
             SuppliersPanel.suppliersTable.removeColumn(SuppliersPanel.suppliersTable.getColumnModel().getColumn(0));
         } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
-    
+
     public static void create(String name, String address, String contact) {
         try {
             Connection query = connect();
@@ -55,7 +60,7 @@ public class Supplier extends DB{
             e.printStackTrace();
         }
     }
-    
+
     public static void update(String id, String name, String address, String contact) {
         try {
             Connection query = connect();
@@ -65,11 +70,11 @@ public class Supplier extends DB{
             statement.setString(3, contact);
             statement.setString(4, id);
             statement.executeUpdate();
-            
+
         } catch (SQLException e) {
         }
     }
-    
+
     public static void delete(String id) {
         try {
             Connection query = connect();
@@ -79,5 +84,23 @@ public class Supplier extends DB{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ArrayList getName() {
+
+        ArrayList<String> names = new ArrayList<String>();
+
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT id, name FROM suppliers");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                names.add(result.getString("id") +") "+result.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return names;
     }
 }
