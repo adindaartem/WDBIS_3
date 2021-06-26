@@ -64,6 +64,10 @@ public class Sales extends DB {
             PreparedStatement statementUp = query.prepareStatement("UPDATE stock SET total = total + (SELECT weight FROM orders WHERE code=?)");
             statementUp.setString(1, code);
             statementUp.executeUpdate();
+            
+            PreparedStatement statementInsert = query.prepareStatement("INSERT INTO stock_history (stock_id, sales_id) VALUES(1,(SELECT id FROM orders WHERE code=?))");
+            statementInsert.setString(1, code);
+            statementInsert.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

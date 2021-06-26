@@ -8,6 +8,7 @@ package main;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import java.awt.CardLayout;
+import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -119,6 +120,11 @@ public class SalesPanel extends javax.swing.JPanel {
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "addSalesCard");
         AddSalesPanel.orderList.setModel(new DefaultComboBoxModel(Order.getCodes().toArray()));
+        
+        Map<String,String> order = Order.getOrderByCode(AddSalesPanel.orderList.getSelectedItem().toString());
+        AddSalesPanel.nameLabel.setText(order.get("name"));
+        AddSalesPanel.weightLabel.setText(order.get("weight") + " karung");
+        AddSalesPanel.dateLabel.setText(order.get("date"));
     }//GEN-LAST:event_addSalesNvgActionPerformed
 
     private void changeSalesNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeSalesNvgActionPerformed

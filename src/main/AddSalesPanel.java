@@ -123,9 +123,9 @@ public class AddSalesPanel extends javax.swing.JPanel {
                                             .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(dateLabel))
                                         .addGap(45, 45, 45)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel47)
-                                            .addComponent(weightLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(weightLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -193,7 +193,7 @@ public class AddSalesPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSalesButton;
     private javax.swing.JButton cancelSalesButton;
-    private javax.swing.JLabel dateLabel;
+    public static javax.swing.JLabel dateLabel;
     private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
@@ -202,9 +202,9 @@ public class AddSalesPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel nameLabel;
+    public static javax.swing.JLabel nameLabel;
     public static javax.swing.JComboBox<String> orderList;
     private javax.swing.JTextField totalPayment;
-    private javax.swing.JLabel weightLabel;
+    public static javax.swing.JLabel weightLabel;
     // End of variables declaration//GEN-END:variables
 }

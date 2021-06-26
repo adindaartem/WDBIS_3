@@ -2,11 +2,17 @@ package main;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.CardLayout;
+import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import static main.ProductionsPanel.productionDateTable;
 import models.Material;
 import models.Order;
+import models.Production;
 import models.Sales;
+import models.Stock;
 import models.Supplier;
 
 /*
@@ -357,6 +363,21 @@ public class MainFrame extends javax.swing.JFrame {
     private void productionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productionsButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "productionsCard");
+
+        Production.getAll();
+
+        productionDateTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                String id = productionDateTable.getModel().getValueAt(productionDateTable.getSelectedRow(), 0).toString();
+                Production.getDetails(id);
+
+                Map<String, String> dates = Production.getDate(id);
+
+                ProductionsPanel.dateStartLabel.setText(dates.keySet().toArray()[0].toString());
+                ProductionsPanel.dateEndLabel.setText(dates.get(dates.keySet().toArray()[0].toString()));
+                ProductionsPanel.totalLabel.setText(Production.getTotal(id));
+            }
+        });
     }//GEN-LAST:event_productionsButtonActionPerformed
 
     private void suppliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppliersButtonActionPerformed
@@ -368,12 +389,15 @@ public class MainFrame extends javax.swing.JFrame {
     private void stockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "stockCard");
-        
+        Stock.getSales();
+        Stock.getProductions();
+        StockPanel.stockLabel.setText(Stock.getStock() + " karung");
+
     }//GEN-LAST:event_stockButtonActionPerformed
 
     private void ordersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
-        cl.show(containerPanel, "ordersCard");   
+        cl.show(containerPanel, "ordersCard");
         Order.getAll();
     }//GEN-LAST:event_ordersButtonActionPerformed
 
@@ -407,8 +431,8 @@ public class MainFrame extends javax.swing.JFrame {
 //            }
             javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (Exception ex) {
-           
-        } 
+
+        }
         //</editor-fold>
 
         /* Create and display the form */
