@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +16,13 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 import main.OrdersPanel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -102,9 +110,9 @@ public class Order extends DB {
             e.printStackTrace();
         }
     }
-    
+
     public static Map getOrderByCode(String code) {
-        Map<String,String> orders = new HashMap<>();  
+        Map<String, String> orders = new HashMap<>();
         try {
             Connection query = connect();
             PreparedStatement statement = query.prepareStatement("SELECT * FROM orders WHERE code = ?");
@@ -121,10 +129,10 @@ public class Order extends DB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return orders;
     }
-    
+
     public static ArrayList getCodes() {
         ArrayList<String> codes = new ArrayList<String>();
         try {
@@ -136,7 +144,19 @@ public class Order extends DB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return codes;
+    }
+
+    public static void print() {
+        try {
+            Connection connection = connect();
+            JasperDesign jasperDesign = JRXmlLoader.load(new File("").getAbsolutePath()+ "/src/main/Orders.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, connection);
+            JasperViewer.viewReport(jp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

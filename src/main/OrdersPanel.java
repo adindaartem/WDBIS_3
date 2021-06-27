@@ -45,6 +45,7 @@ public class OrdersPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ordersTable = new javax.swing.JTable();
+        printButton = new javax.swing.JButton();
 
         addOrdersNvg.setText("Tambah");
         addOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +88,13 @@ public class OrdersPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(ordersTable);
 
+        printButton.setText("Print");
+        printButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,6 +103,8 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(printButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(editOrdersNvg)
@@ -124,7 +134,8 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addOrdersNvg)
                     .addComponent(editOrdersNvg)
-                    .addComponent(deleteButton))
+                    .addComponent(deleteButton)
+                    .addComponent(printButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -183,6 +194,10 @@ public class OrdersPanel extends javax.swing.JPanel {
         Order.getAll();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
+    private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
+        Order.print();
+    }//GEN-LAST:event_printButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addOrdersNvg;
@@ -195,5 +210,6 @@ public class OrdersPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JScrollPane jScrollPane4;
     public static javax.swing.JTable ordersTable;
+    private javax.swing.JButton printButton;
     // End of variables declaration//GEN-END:variables
 }
