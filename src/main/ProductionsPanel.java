@@ -5,13 +5,11 @@
  */
 package main;
 
+import addPanel.AddProductionsPanel;
 import java.awt.CardLayout;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import models.Material;
-import models.Production;
 import models.Supplier;
 
 /**
@@ -210,24 +208,23 @@ public class ProductionsPanel extends javax.swing.JPanel {
     private void addProductionNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductionNvgActionPerformed
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "addProductionsCard");
-        
+
         AddProductionsPanel.supplierBox1.setModel(new DefaultComboBoxModel(Supplier.getName().toArray()));
         AddProductionsPanel.supplierBox2.setModel(new DefaultComboBoxModel(Supplier.getName().toArray()));
         AddProductionsPanel.supplierBox3.setModel(new DefaultComboBoxModel(Supplier.getName().toArray()));
         AddProductionsPanel.supplierBox4.setModel(new DefaultComboBoxModel(Supplier.getName().toArray()));
-        
-        Map<Integer,String> materials = Material.getStock();
+
+        Map<Integer, String> materials = Material.getStock();
         AddProductionsPanel.koheStock.setText(materials.get(1));
         AddProductionsPanel.bekatulStock.setText(materials.get(5));
         AddProductionsPanel.arangStock.setText(materials.get(2));
         AddProductionsPanel.obatStock.setText(materials.get(3));
-        
+
         AddProductionsPanel.bekatulStockVal = Integer.valueOf(materials.get(5));
         AddProductionsPanel.koheStockVal = Integer.valueOf(materials.get(1));
         AddProductionsPanel.arangStockVal = Integer.valueOf(materials.get(2));
         AddProductionsPanel.obatStockVal = Integer.valueOf(materials.get(3));
     }//GEN-LAST:event_addProductionNvgActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addProductionNvg;

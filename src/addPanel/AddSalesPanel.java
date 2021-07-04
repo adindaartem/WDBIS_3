@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package addPanel;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import java.awt.CardLayout;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
+import main.MainFrame;
 import models.Order;
 import models.Sales;
 

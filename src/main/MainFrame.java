@@ -49,6 +49,7 @@ public class MainFrame extends javax.swing.JFrame {
         ordersButton = new javax.swing.JButton();
         materialsButton = new javax.swing.JButton();
         salesButton = new javax.swing.JButton();
+        usersButton = new javax.swing.JButton();
         containerPanel = new javax.swing.JPanel();
         productions = new javax.swing.JPanel();
         productionsPanel = new main.ProductionsPanel();
@@ -63,13 +64,13 @@ public class MainFrame extends javax.swing.JFrame {
         materials = new javax.swing.JPanel();
         materialsPanel = new main.MaterialsPanel();
         addSuppliers = new javax.swing.JPanel();
-        addSupliersPanel = new main.AddSupliersPanel();
+        addSupliersPanel = new addPanel.AddSupliersPanel();
         addOrders = new javax.swing.JPanel();
-        addOrdersPanel = new main.AddOrdersPanel();
+        addOrdersPanel = new addPanel.AddOrdersPanel();
         addSales = new javax.swing.JPanel();
-        addSalesPanel = new main.AddSalesPanel();
+        addSalesPanel = new addPanel.AddSalesPanel();
         addProductions = new javax.swing.JPanel();
-        addProductionPanel = new main.AddProductionsPanel();
+        addProductionPanel = new addPanel.AddProductionsPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -118,6 +119,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        usersButton.setText("Pengguna");
+
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
@@ -128,6 +131,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(stockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(materialsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(salesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(usersButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +147,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(materialsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(salesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(usersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 240, Short.MAX_VALUE))
         );
 
         containerPanel.setLayout(new java.awt.CardLayout());
@@ -420,7 +426,7 @@ public class MainFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -447,12 +453,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addOrders;
-    private main.AddOrdersPanel addOrdersPanel;
-    private main.AddProductionsPanel addProductionPanel;
+    private addPanel.AddOrdersPanel addOrdersPanel;
+    private addPanel.AddProductionsPanel addProductionPanel;
     private javax.swing.JPanel addProductions;
     private javax.swing.JPanel addSales;
-    private main.AddSalesPanel addSalesPanel;
-    private main.AddSupliersPanel addSupliersPanel;
+    private addPanel.AddSalesPanel addSalesPanel;
+    private addPanel.AddSupliersPanel addSupliersPanel;
     private javax.swing.JPanel addSuppliers;
     public static javax.swing.JPanel containerPanel;
     private javax.swing.JMenu jMenu1;
@@ -476,5 +482,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel suppliers;
     private javax.swing.JButton suppliersButton;
     private main.SuppliersPanel suppliersPanel;
+    private javax.swing.JButton usersButton;
     // End of variables declaration//GEN-END:variables
 }
