@@ -7,7 +7,10 @@ package models;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import main.UsersPanel;
 import static models.DB.connect;
 
 /**
@@ -29,4 +32,32 @@ public class User extends DB {
             e.printStackTrace();
         }
     }
+
+    public static void getAll() {
+        DefaultTableModel base = new DefaultTableModel();
+        base.addColumn("id");
+        base.addColumn("Nama");
+        base.addColumn("Username");
+        base.addColumn("Password");
+        base.addColumn("Role");
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT users.id, users.name, username, password, user_types.name AS role FROM users INNER JOIN user_types ON users.user_type_id = user_types.id");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                base.addRow(new Object[]{
+                    result.getString("id"),
+                    result.getString("name"),
+                    result.getString("username"),
+                    result.getString("password"),
+                    result.getString("role")
+                });
+            }
+            UsersPanel.usersTable.setModel(base);
+            UsersPanel.usersTable.removeColumn(UsersPanel.usersTable.getColumnModel().getColumn(0));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
