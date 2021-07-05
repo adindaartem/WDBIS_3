@@ -14,6 +14,7 @@ import models.Production;
 import models.Sales;
 import models.Stock;
 import models.Supplier;
+import models.User;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -63,6 +64,8 @@ public class MainFrame extends javax.swing.JFrame {
         salesPanel = new main.SalesPanel();
         materials = new javax.swing.JPanel();
         materialsPanel = new main.MaterialsPanel();
+        users = new javax.swing.JPanel();
+        usersPanel = new main.UsersPanel();
         addSuppliers = new javax.swing.JPanel();
         addSupliersPanel = new addPanel.AddSupliersPanel();
         addOrders = new javax.swing.JPanel();
@@ -120,6 +123,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         usersButton.setText("Pengguna");
+        usersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usersButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -149,7 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(salesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(usersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 240, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         containerPanel.setLayout(new java.awt.CardLayout());
@@ -267,6 +275,21 @@ public class MainFrame extends javax.swing.JFrame {
 
         containerPanel.add(materials, "materialsCard");
 
+        javax.swing.GroupLayout usersLayout = new javax.swing.GroupLayout(users);
+        users.setLayout(usersLayout);
+        usersLayout.setHorizontalGroup(
+            usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(usersPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+        );
+        usersLayout.setVerticalGroup(
+            usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usersLayout.createSequentialGroup()
+                .addComponent(usersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 119, Short.MAX_VALUE))
+        );
+
+        containerPanel.add(users, "usersCard");
+
         javax.swing.GroupLayout addSuppliersLayout = new javax.swing.GroupLayout(addSuppliers);
         addSuppliers.setLayout(addSuppliersLayout);
         addSuppliersLayout.setHorizontalGroup(
@@ -369,21 +392,27 @@ public class MainFrame extends javax.swing.JFrame {
     private void productionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productionsButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "productionsCard");
-
         Production.getAll();
+        if (productionDateTable.getRowCount() > 0) {
+            productionDateTable.setRowSelectionInterval(0, 0);
 
-        productionDateTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent event) {
-                String id = productionDateTable.getModel().getValueAt(productionDateTable.getSelectedRow(), 0).toString();
-                Production.getDetails(id);
+            productionDateTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                public void valueChanged(ListSelectionEvent event) {
+                    int row = productionDateTable.getSelectedRow();
+                    if (row == -1) {
+                        row = 0;
+                    }
+                    String id = productionDateTable.getModel().getValueAt(row, 0).toString();
+                    Production.getDetails(id);
 
-                Map<String, String> dates = Production.getDate(id);
+                    Map<String, String> dates = Production.getDate(id);
 
-                ProductionsPanel.dateStartLabel.setText(dates.keySet().toArray()[0].toString());
-                ProductionsPanel.dateEndLabel.setText(dates.get(dates.keySet().toArray()[0].toString()));
-                ProductionsPanel.totalLabel.setText(Production.getTotal(id));
-            }
-        });
+                    ProductionsPanel.dateStartLabel.setText(dates.keySet().toArray()[0].toString());
+                    ProductionsPanel.dateEndLabel.setText(dates.get(dates.keySet().toArray()[0].toString()));
+                    ProductionsPanel.totalLabel.setText(Production.getTotal(id));
+                }
+            });
+        }
     }//GEN-LAST:event_productionsButtonActionPerformed
 
     private void suppliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppliersButtonActionPerformed
@@ -418,6 +447,12 @@ public class MainFrame extends javax.swing.JFrame {
         cl.show(containerPanel, "salesCard");
         Sales.getAll();
     }//GEN-LAST:event_salesButtonActionPerformed
+
+    private void usersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersButtonActionPerformed
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
+        cl.show(containerPanel, "usersCard");
+        User.getAll();
+    }//GEN-LAST:event_usersButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,6 +517,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel suppliers;
     private javax.swing.JButton suppliersButton;
     private main.SuppliersPanel suppliersPanel;
+    private javax.swing.JPanel users;
     private javax.swing.JButton usersButton;
+    private main.UsersPanel usersPanel;
     // End of variables declaration//GEN-END:variables
 }
