@@ -32,6 +32,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -51,6 +53,7 @@ public class MainFrame extends javax.swing.JFrame {
         materialsButton = new javax.swing.JButton();
         salesButton = new javax.swing.JButton();
         usersButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         containerPanel = new javax.swing.JPanel();
         productions = new javax.swing.JPanel();
         productionsPanel = new main.ProductionsPanel();
@@ -74,6 +77,8 @@ public class MainFrame extends javax.swing.JFrame {
         addSalesPanel = new addPanel.AddSalesPanel();
         addProductions = new javax.swing.JPanel();
         addProductionPanel = new addPanel.AddProductionsPanel();
+        addUsers = new javax.swing.JPanel();
+        addUsersPanel = new addPanel.AddUsersPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -129,6 +134,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        logoutButton.setText("Keluar");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
@@ -140,6 +152,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(materialsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(salesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(usersButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +170,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(salesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(usersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         containerPanel.setLayout(new java.awt.CardLayout());
@@ -366,6 +380,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         containerPanel.add(addProductions, "addProductionsCard");
 
+        javax.swing.GroupLayout addUsersLayout = new javax.swing.GroupLayout(addUsers);
+        addUsers.setLayout(addUsersLayout);
+        addUsersLayout.setHorizontalGroup(
+            addUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(addUsersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+        );
+        addUsersLayout.setVerticalGroup(
+            addUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(addUsersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+        );
+
+        containerPanel.add(addUsers, "addUsersCard");
+
         jMenu1.setText("About");
         jMenuBar1.add(jMenu1);
 
@@ -454,6 +481,12 @@ public class MainFrame extends javax.swing.JFrame {
         User.getAll();
     }//GEN-LAST:event_usersButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        Session.logout();
+        setVisible(false);
+        new LoginFrame().setVisible(true);
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -495,9 +528,12 @@ public class MainFrame extends javax.swing.JFrame {
     private addPanel.AddSalesPanel addSalesPanel;
     private addPanel.AddSupliersPanel addSupliersPanel;
     private javax.swing.JPanel addSuppliers;
+    private javax.swing.JPanel addUsers;
+    private addPanel.AddUsersPanel addUsersPanel;
     public static javax.swing.JPanel containerPanel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JPanel materials;
     private javax.swing.JButton materialsButton;
     private main.MaterialsPanel materialsPanel;

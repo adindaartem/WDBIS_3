@@ -5,6 +5,9 @@
  */
 package main;
 
+import java.awt.CardLayout;
+import static main.MainFrame.containerPanel;
+
 /**
  *
  * @author Faruk
@@ -103,7 +106,8 @@ public class UsersPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addUsersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUsersNvgActionPerformed
-
+        CardLayout cl = (CardLayout) (containerPanel.getLayout());
+        cl.show(containerPanel, "addUsersCard");
     }//GEN-LAST:event_addUsersNvgActionPerformed
 
     private void changeUsersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeUsersNvgActionPerformed
