@@ -9,11 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
-import main.OrdersPanel;
 import main.ProductionsPanel;
 import static models.DB.connect;
 
@@ -22,7 +20,7 @@ import static models.DB.connect;
  * @author Faruk
  */
 public class Production extends DB {
-    
+
     public static void getAll() {
         DefaultTableModel base = new DefaultTableModel();
         base.addColumn("id");
@@ -43,9 +41,9 @@ public class Production extends DB {
             e.printStackTrace();
         }
     }
-    
+
     public static Map getDate(String id) {
-        Map<String,String> dates = new HashMap<>();
+        Map<String, String> dates = new HashMap<>();
         try {
             Connection query = connect();
             PreparedStatement statement = query.prepareStatement("SELECT date_start,date_end FROM productions WHERE id = ?");
@@ -57,11 +55,11 @@ public class Production extends DB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return dates;
     }
-    
-       public static String getTotal(String id) {
+
+    public static String getTotal(String id) {
         String total = "";
         try {
             Connection query = connect();
@@ -74,12 +72,10 @@ public class Production extends DB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return total;
     }
-    
-    
-    
+
     public static void getDetails(String id) {
         DefaultTableModel base = new DefaultTableModel();
         base.addColumn("Nama");
@@ -124,18 +120,22 @@ public class Production extends DB {
             if (rs.next()) {
                 id = rs.getInt(1);
             }
-            
-            PreparedStatement statementUp = query.prepareStatement("UPDATE stock SET total = total + ?");
-            statementUp.setString(1, output);
-            statementUp.executeUpdate();
-            
+
+            PreparedStatement stockUpdateStatement = query.prepareStatement("UPDATE stock SET total = total + ?");
+            stockUpdateStatement.setString(1, output);
+            stockUpdateStatement.executeUpdate();
+
+            PreparedStatement stockHistoryStatement = query.prepareStatement("INSERT INTO stock_history (stock_id, production_id) VALUES(1,?)");
+            stockHistoryStatement.setInt(1, id);
+            stockHistoryStatement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return id;
     }
-    
+
     public static void createPurchases(int productionId, int materialId, int supplierId, int amount, int cost) {
         try {
             Connection query = connect();

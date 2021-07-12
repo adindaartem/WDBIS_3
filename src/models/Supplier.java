@@ -9,11 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.table.DefaultTableModel;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import javax.swing.table.DefaultTableModel;
 import main.SuppliersPanel;
 
 /**
@@ -30,7 +27,7 @@ public class Supplier extends DB {
         base.addColumn("Kontak");
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT * FROM suppliers");
+            PreparedStatement statement = query.prepareStatement("SELECT * FROM suppliers WHERE is_deleted = false");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 base.addRow(new Object[]{
@@ -78,7 +75,7 @@ public class Supplier extends DB {
     public static void delete(String id) {
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("DELETE FROM suppliers WHERE ID=? LIMIT 1");
+            PreparedStatement statement = query.prepareStatement("UPDATE suppliers SET is_deleted = true WHERE ID=? LIMIT 1");
             statement.setString(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -92,10 +89,10 @@ public class Supplier extends DB {
 
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT id, name FROM suppliers");
+            PreparedStatement statement = query.prepareStatement("SELECT id, name FROM suppliers WHERE is_deleted = false");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                names.add(result.getString("id") +") "+result.getString("name"));
+                names.add(result.getString("id") + ") " + result.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

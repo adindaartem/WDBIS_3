@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
-import main.ProductionsPanel;
 import main.StockPanel;
 import static models.DB.connect;
 
@@ -44,7 +43,7 @@ public class Stock extends DB {
     public static void getProductions() {
         DefaultTableModel base = new DefaultTableModel();
         base.addColumn("Tanggal");
-        base.addColumn("Pendapatan");
+        base.addColumn("Biaya");
         base.addColumn("Berat");
         try {
             Connection query = connect();
@@ -54,14 +53,15 @@ public class Stock extends DB {
                 base.addRow(new Object[]{
                     result.getString("date"),
                     result.getString("total"),
-                    result.getString("weight"),});
+                    result.getString("weight") + " karung"
+                });
             }
             StockPanel.produksiPupukTable.setModel(base);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
     public static String getStock() {
         String total = "";
         try {
@@ -74,7 +74,7 @@ public class Stock extends DB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return total;
     }
 }

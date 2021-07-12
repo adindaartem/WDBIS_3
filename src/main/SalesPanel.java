@@ -21,8 +21,9 @@ import models.Sales;
  * @author Faruk
  */
 public class SalesPanel extends javax.swing.JPanel {
+
     private final DatePickerSettings dateSettings = new DatePickerSettings();
-    private final DatePicker date; 
+    private final DatePicker date;
 
     /**
      * Creates new form SalesPanel
@@ -121,8 +122,8 @@ public class SalesPanel extends javax.swing.JPanel {
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "addSalesCard");
         AddSalesPanel.orderList.setModel(new DefaultComboBoxModel(Order.getCodes().toArray()));
-        
-        Map<String,String> order = Order.getOrderByCode(AddSalesPanel.orderList.getSelectedItem().toString());
+
+        Map<String, String> order = Order.getOrderByCode(AddSalesPanel.orderList.getSelectedItem().toString());
         AddSalesPanel.nameLabel.setText(order.get("name"));
         AddSalesPanel.weightLabel.setText(order.get("weight") + " karung");
         AddSalesPanel.dateLabel.setText(order.get("date"));
@@ -133,19 +134,18 @@ public class SalesPanel extends javax.swing.JPanel {
         String totalVal = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 5).toString();
         String dateVal = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 6).toString();
         JTextField total = new JTextField();
-        
+
         total.setText(totalVal);
         date.setText(dateVal);
         Object[] message = {
             "Tanggal ", date,
-            "Total Bayar",total
+            "Total Bayar", total
         };
         int option = JOptionPane.showConfirmDialog(null, message, "Ubah Penjualan", JOptionPane.OK_CANCEL_OPTION);
-        
+
         Sales.update(id, date.getText(), total.getText());
         Sales.getAll();
     }//GEN-LAST:event_changeSalesNvgActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSalesNvg;

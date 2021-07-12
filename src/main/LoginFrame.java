@@ -55,7 +55,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 26)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
         jLabel3.setText("Sinagro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -89,7 +89,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(loginButton)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
