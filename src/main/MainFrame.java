@@ -34,6 +34,12 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
+
+        if (Session.loggedIn() && Session.getType() == 1) {
+            usersButton.setVisible(true);
+        } else {
+            usersButton.setVisible(false);
+        }
     }
 
     /**

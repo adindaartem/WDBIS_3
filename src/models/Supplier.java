@@ -27,7 +27,7 @@ public class Supplier extends DB {
         base.addColumn("Kontak");
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT * FROM suppliers WHERE is_deleted = false");
+            PreparedStatement statement = query.prepareStatement("SELECT * FROM suppliers WHERE is_deleted = false AND name IS NOT 'RESERVED'");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 base.addRow(new Object[]{
@@ -89,7 +89,7 @@ public class Supplier extends DB {
 
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT id, name FROM suppliers WHERE is_deleted = false");
+            PreparedStatement statement = query.prepareStatement("SELECT id, name FROM suppliers WHERE is_deleted = false AND name IS NOT 'RESERVED'");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 names.add(result.getString("id") + ") " + result.getString("name"));
