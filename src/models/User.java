@@ -39,18 +39,16 @@ public class User extends DB {
         base.addColumn("id");
         base.addColumn("Nama");
         base.addColumn("Username");
-        base.addColumn("Password");
         base.addColumn("Role");
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT users.id, users.name, username, password, user_types.name AS role FROM users INNER JOIN user_types ON users.user_type_id = user_types.id");
+            PreparedStatement statement = query.prepareStatement("SELECT users.id, users.name, username, user_types.name AS role FROM users INNER JOIN user_types ON users.user_type_id = user_types.id");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 base.addRow(new Object[]{
                     result.getString("id"),
                     result.getString("name"),
                     result.getString("username"),
-                    result.getString("password"),
                     result.getString("role")
                 });
             }

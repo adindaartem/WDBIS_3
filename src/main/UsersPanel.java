@@ -5,8 +5,11 @@
  */
 package main;
 
+import addPanel.AddUsersPanel;
 import java.awt.CardLayout;
+import javax.swing.DefaultComboBoxModel;
 import static main.MainFrame.containerPanel;
+import models.Roles;
 
 /**
  *
@@ -106,6 +109,7 @@ public class UsersPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addUsersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUsersNvgActionPerformed
+        AddUsersPanel.roleComboBox.setModel(new DefaultComboBoxModel(Roles.getRoles().toArray()));
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "addUsersCard");
     }//GEN-LAST:event_addUsersNvgActionPerformed

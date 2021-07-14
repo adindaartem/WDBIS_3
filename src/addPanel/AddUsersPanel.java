@@ -40,6 +40,8 @@ public class AddUsersPanel extends javax.swing.JPanel {
         passwordTextfield = new javax.swing.JPasswordField();
         cancelButton = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        roleComboBox = new javax.swing.JComboBox<>();
 
         jLabel1.setText("Nama");
 
@@ -61,6 +63,8 @@ public class AddUsersPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("Role");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,19 +73,21 @@ public class AddUsersPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nameTextfield)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(usernameTextfield)
                     .addComponent(passwordTextfield)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 248, Short.MAX_VALUE)
                         .addComponent(createButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cancelButton)))
+                        .addComponent(cancelButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,11 +105,15 @@ public class AddUsersPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(createButton))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -118,8 +128,9 @@ public class AddUsersPanel extends javax.swing.JPanel {
         String username = usernameTextfield.getText();
         String password = new String(passwordTextfield.getPassword());
         String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+        String role = roleComboBox.getSelectedItem().toString().split("[)]")[0];
 
-        User.create(name, username, hashed, "2");
+        User.create(name, username, hashed, role);
     }//GEN-LAST:event_createButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -128,8 +139,10 @@ public class AddUsersPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nameTextfield;
     private javax.swing.JPasswordField passwordTextfield;
+    public static javax.swing.JComboBox<String> roleComboBox;
     private javax.swing.JTextField usernameTextfield;
     // End of variables declaration//GEN-END:variables
 }
