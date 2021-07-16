@@ -41,21 +41,19 @@
                                   </Group>
                                   <Component id="jLabel51" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
                                   <Component id="datePicker" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel45" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="nameLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel45" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="nameLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel46" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="dateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel46" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
-                                              <Component id="dateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel47" max="32767" attributes="0"/>
-                                              <Component id="weightLabel" max="32767" attributes="0"/>
-                                          </Group>
+                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel47" max="32767" attributes="0"/>
+                                          <Component id="weightLabel" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>

@@ -174,6 +174,7 @@ public class AddSalesPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelSalesButtonActionPerformed
+        clearForm();
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "salesCard");
         Sales.getAll();
@@ -194,6 +195,10 @@ public class AddSalesPanel extends javax.swing.JPanel {
         cancelSalesButtonActionPerformed(evt);
     }//GEN-LAST:event_addSalesButtonActionPerformed
 
+    private void clearForm() {
+        datePicker.setText("");
+        totalPayment.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSalesButton;
     private javax.swing.JButton cancelSalesButton;

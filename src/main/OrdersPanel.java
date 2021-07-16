@@ -7,10 +7,10 @@ package main;
 
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
-import models.Order;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import models.Order;
 
 /**
  *
@@ -106,9 +106,9 @@ public class OrdersPanel extends javax.swing.JPanel {
                         .addComponent(printButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editOrdersNvg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addOrdersNvg))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
@@ -161,29 +161,28 @@ public class OrdersPanel extends javax.swing.JPanel {
         String nameVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 3).toString();
         String contactVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 4).toString();
         String weightVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 5).toString();
-        
-        
+
         DatePickerSettings dateSettings = new DatePickerSettings();
         dateSettings.setFormatForDatesCommonEra("yyyy-MM-dd");
         JTextField name = new JTextField();
         JTextField weight = new JTextField();
         JTextField contact = new JTextField();
         DatePicker datePick = new DatePicker(dateSettings);
-        
+
         name.setText(nameVal);
         datePick.setText(dateVal);
         contact.setText(contactVal);
         weight.setText(weightVal);
-        
+
         Object[] message = {
             "Nama", name,
             "Kontak", contact,
             "Berat (kg)", weight,
             "Tanggal", datePick
         };
-        
+
         int option = JOptionPane.showConfirmDialog(null, message, "Ubah Pesanan", JOptionPane.OK_CANCEL_OPTION);
-        
+
         Order.update(id, name.getText(), datePick.getText(), contact.getText(), weight.getText());
         Order.getAll();
     }//GEN-LAST:event_editOrdersNvgActionPerformed
@@ -197,7 +196,6 @@ public class OrdersPanel extends javax.swing.JPanel {
     private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
         Order.print();
     }//GEN-LAST:event_printButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addOrdersNvg;

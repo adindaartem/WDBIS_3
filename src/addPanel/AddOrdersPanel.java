@@ -128,6 +128,7 @@ public class AddOrdersPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrdersButtonActionPerformed
+        clearForm();
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "ordersCard");
         Order.getAll();
@@ -143,6 +144,12 @@ public class AddOrdersPanel extends javax.swing.JPanel {
         cancelOrdersButtonActionPerformed(evt);
     }//GEN-LAST:event_addOrdersButtonActionPerformed
 
+    private void clearForm() {
+        nameTF.setText("");
+        contactTF.setText("");
+        weightTF.setText("");
+        datePick.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addOrdersButton;
     private javax.swing.JButton cancelOrdersButton;

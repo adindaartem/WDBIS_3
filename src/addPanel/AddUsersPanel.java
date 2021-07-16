@@ -118,6 +118,7 @@ public class AddUsersPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        clearForm();
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "usersCard");
         User.getAll();
@@ -133,6 +134,11 @@ public class AddUsersPanel extends javax.swing.JPanel {
         User.create(name, username, hashed, role);
     }//GEN-LAST:event_createButtonActionPerformed
 
+    private void clearForm() {
+        nameTextfield.setText("");
+        usernameTextfield.setText("");
+        passwordTextfield.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton createButton;

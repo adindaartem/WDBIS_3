@@ -461,6 +461,7 @@ public class AddProductionsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        clearForm();
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "productionsCard");
     }//GEN-LAST:event_cancelButtonActionPerformed
@@ -562,6 +563,23 @@ public class AddProductionsPanel extends javax.swing.JPanel {
             isEnough = false;
         }
         return isEnough;
+    }
+
+    private void clearForm() {
+        bekatulCost.setText("");
+        koheCost.setText("");
+        obatCost.setText("");
+        pekerjaCost.setText("");
+        arangCost.setText("");
+
+        bekatulSpinner.setValue(0);
+        koheSpinner.setValue(0);
+        obatSpinner.setValue(0);
+        pekerjaSpinner.setValue(0);
+        arangSpinner.setValue(0);
+
+        datePickerStart.setText("");
+        datePickerEnd.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

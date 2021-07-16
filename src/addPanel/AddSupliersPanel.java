@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package addPanel;
-import models.Supplier;
 
 import java.awt.CardLayout;
 import main.MainFrame;
+import models.Supplier;
 
 /**
  *
@@ -119,10 +119,16 @@ public class AddSupliersPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_addSupliersButtonActionPerformed
 
     private void cancelSuppliersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelSuppliersButtonActionPerformed
+        clearForm();
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "suppliersCard");
     }//GEN-LAST:event_cancelSuppliersButtonActionPerformed
 
+    private void clearForm() {
+        name.setText("");
+        address.setText("");
+        contact.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSupliersButton;

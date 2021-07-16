@@ -5,10 +5,10 @@
  */
 package main;
 
-import models.Supplier;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import models.Supplier;
 
 /**
  *
@@ -95,9 +95,9 @@ public class SuppliersPanel extends javax.swing.JPanel {
                     .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(suppliersPanelLayout.createSequentialGroup()
                             .addComponent(deleteSupplierButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(editSupliersNvg)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(addSupliersNvg))
                         .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,7 +168,7 @@ public class SuppliersPanel extends javax.swing.JPanel {
         String addressVal = suppliersTable.getModel().getValueAt(suppliersTable.getSelectedRow(), 2).toString();
         String contactVal = suppliersTable.getModel().getValueAt(suppliersTable.getSelectedRow(), 3).toString();
 
-        JTextField name = new JTextField(); 
+        JTextField name = new JTextField();
         JTextField address = new JTextField();
         JTextField contact = new JTextField();
 
@@ -195,7 +195,6 @@ public class SuppliersPanel extends javax.swing.JPanel {
         Supplier.delete(id);
         Supplier.getAll();
     }//GEN-LAST:event_deleteSupplierButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSupliersNvg;
