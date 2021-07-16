@@ -37,11 +37,11 @@ public class AddUsersPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         usernameTextfield = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        passwordTextfield = new javax.swing.JPasswordField();
         cancelButton = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         roleComboBox = new javax.swing.JComboBox<>();
+        passwordTextfield = new javax.swing.JTextField();
 
         jLabel1.setText("Nama");
 
@@ -74,7 +74,6 @@ public class AddUsersPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nameTextfield)
                     .addComponent(usernameTextfield)
-                    .addComponent(passwordTextfield)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 248, Short.MAX_VALUE)
                         .addComponent(createButton)
@@ -87,7 +86,8 @@ public class AddUsersPanel extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(passwordTextfield))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -105,7 +105,7 @@ public class AddUsersPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,7 +127,7 @@ public class AddUsersPanel extends javax.swing.JPanel {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         String name = nameTextfield.getText();
         String username = usernameTextfield.getText();
-        String password = new String(passwordTextfield.getPassword());
+        String password = passwordTextfield.getText();
         String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
         String role = roleComboBox.getSelectedItem().toString().split("[)]")[0];
 
@@ -147,7 +147,7 @@ public class AddUsersPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nameTextfield;
-    private javax.swing.JPasswordField passwordTextfield;
+    private javax.swing.JTextField passwordTextfield;
     public static javax.swing.JComboBox<String> roleComboBox;
     private javax.swing.JTextField usernameTextfield;
     // End of variables declaration//GEN-END:variables
