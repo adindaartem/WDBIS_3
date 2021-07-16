@@ -535,15 +535,19 @@ public class AddProductionsPanel extends javax.swing.JPanel {
                 Production.createPurchases(id, 5, Integer.valueOf(bekatulSupplier), bekatulAmount, bekatulFee);
                 Material.updateStock(5, leftover);
             }
-            
+
             if (obatAmount > 0) {
                 int leftover = Integer.valueOf(obatStock.getText()) - obatPengurai;
                 Production.createPurchases(id, 3, Integer.valueOf(obatSupplier), obatAmount, obatFee);
                 Material.updateStock(3, leftover);
             }
+
+            Production.createPurchases(id, 4, 1, pekerjaAmount, pekerjaFee);
+
+            Production.getAll();
+            cancelButtonActionPerformed(evt);
         }
-        
-        
+
     }//GEN-LAST:event_addProductionButtonActionPerformed
 
     private boolean checkStock() {

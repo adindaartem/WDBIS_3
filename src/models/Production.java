@@ -85,7 +85,7 @@ public class Production extends DB {
         base.addColumn("Pemasok");
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT materials.name, amount, unit, cost, suppliers.name AS supplierName FROM purchases INNER JOIN materials ON material_id = materials.id LEFT JOIN suppliers ON supplier_id = suppliers.id WHERE production_id = ?");
+            PreparedStatement statement = query.prepareStatement("SELECT materials.name, amount, unit, cost, IF(suppliers.name = 'RESERVED', '-' , suppliers.name) AS supplierName FROM purchases INNER JOIN materials ON material_id = materials.id LEFT JOIN suppliers ON supplier_id = suppliers.id WHERE production_id = ?");
             statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
