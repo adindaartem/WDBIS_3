@@ -15,7 +15,9 @@ import models.Order;
  * @author Faruk
  */
 public class AddOrdersPanel extends javax.swing.JPanel {
+
     private final DatePickerSettings dateSettings = new DatePickerSettings();
+
     /**
      * Creates new form AddOrdersPanel
      */
@@ -68,7 +70,7 @@ public class AddOrdersPanel extends javax.swing.JPanel {
 
         jLabel39.setText("Kontak");
 
-        jLabel40.setText("Berat (Kg)");
+        jLabel40.setText("Pupuk (karung)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,11 +138,10 @@ public class AddOrdersPanel extends javax.swing.JPanel {
         String contact = contactTF.getText();
         String weight = weightTF.getText();
         String date = datePick.getText();
-        
+
         Order.create(name, date, contact, weight);
         cancelOrdersButtonActionPerformed(evt);
     }//GEN-LAST:event_addOrdersButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addOrdersButton;

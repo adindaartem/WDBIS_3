@@ -8,7 +8,6 @@ package addPanel;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import java.awt.CardLayout;
 import java.util.Map;
-import javax.swing.DefaultComboBoxModel;
 import main.MainFrame;
 import models.Order;
 import models.Sales;
@@ -18,7 +17,9 @@ import models.Sales;
  * @author Faruk
  */
 public class AddSalesPanel extends javax.swing.JPanel {
+
     private final DatePickerSettings dateSettings = new DatePickerSettings();
+
     /**
      * Creates new form AddSalesPanel
      */
@@ -50,7 +51,7 @@ public class AddSalesPanel extends javax.swing.JPanel {
         addSalesButton = new javax.swing.JButton();
         jLabel51 = new javax.swing.JLabel();
         datePicker = new com.github.lgooddatepicker.components.DatePicker(dateSettings);
-        totalPayment = new javax.swing.JTextField();
+        totalPayment = new javax.swing.JFormattedTextField();
 
         orderList.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -92,6 +93,8 @@ public class AddSalesPanel extends javax.swing.JPanel {
 
         jLabel51.setText("Total Bayar");
 
+        totalPayment.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,19 +119,20 @@ public class AddSalesPanel extends javax.swing.JPanel {
                                         .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(orderList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(dateLabel))
-                                        .addGap(45, 45, 45)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(weightLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(dateLabel))
+                                            .addGap(45, 45, 45)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(weightLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -147,8 +151,8 @@ public class AddSalesPanel extends javax.swing.JPanel {
                 .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                    .addComponent(jLabel47))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dateLabel)
@@ -176,7 +180,7 @@ public class AddSalesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cancelSalesButtonActionPerformed
 
     private void orderListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_orderListItemStateChanged
-        Map<String,String> order = Order.getOrderByCode(evt.getItem().toString());
+        Map<String, String> order = Order.getOrderByCode(evt.getItem().toString());
         nameLabel.setText(order.get("name"));
         weightLabel.setText(order.get("weight") + " kg");
         dateLabel.setText(order.get("date"));
@@ -184,12 +188,11 @@ public class AddSalesPanel extends javax.swing.JPanel {
 
     private void addSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSalesButtonActionPerformed
         String date = datePicker.getText();
-        String total = totalPayment.getText();
+        String total = totalPayment.getValue().toString();
         String code = orderList.getSelectedItem().toString();
         Sales.create(code, date, total);
         cancelSalesButtonActionPerformed(evt);
     }//GEN-LAST:event_addSalesButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSalesButton;
@@ -205,7 +208,7 @@ public class AddSalesPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel51;
     public static javax.swing.JLabel nameLabel;
     public static javax.swing.JComboBox<String> orderList;
-    private javax.swing.JTextField totalPayment;
+    private javax.swing.JFormattedTextField totalPayment;
     public static javax.swing.JLabel weightLabel;
     // End of variables declaration//GEN-END:variables
 }
