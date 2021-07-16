@@ -442,7 +442,7 @@ public class MainFrame extends javax.swing.JFrame {
 
                     ProductionsPanel.dateStartLabel.setText(dates.keySet().toArray()[0].toString());
                     ProductionsPanel.dateEndLabel.setText(dates.get(dates.keySet().toArray()[0].toString()));
-                    ProductionsPanel.totalLabel.setText(Production.getTotal(id));
+                    ProductionsPanel.totalLabel.setText(String.format("Rp%,.0f", Production.getTotal(id)).replaceAll(",", "."));
                 }
             });
         }

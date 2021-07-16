@@ -23,7 +23,7 @@ public class Stock extends DB {
         DefaultTableModel base = new DefaultTableModel();
         base.addColumn("Tanggal");
         base.addColumn("Pendapatan");
-        base.addColumn("Berat");
+        base.addColumn("Terjual (karung)");
         try {
             Connection query = connect();
             PreparedStatement statement = query.prepareStatement("SELECT sales.date AS date, sales.total_payment AS total, orders.weight AS weight FROM stock_history INNER JOIN sales ON(stock_history.sales_id = sales.order_id) INNER JOIN orders ON(sales.order_id = orders.id)");
@@ -31,7 +31,7 @@ public class Stock extends DB {
             while (result.next()) {
                 base.addRow(new Object[]{
                     result.getString("date"),
-                    result.getString("total"),
+                    String.format("Rp%,.0f", result.getDouble("total")).replaceAll(",", "."),
                     result.getString("weight"),});
             }
             StockPanel.penjualanPupukTable.setModel(base);
@@ -44,7 +44,7 @@ public class Stock extends DB {
         DefaultTableModel base = new DefaultTableModel();
         base.addColumn("Tanggal");
         base.addColumn("Biaya");
-        base.addColumn("Berat");
+        base.addColumn("Hasil (karung)");
         try {
             Connection query = connect();
             PreparedStatement statement = query.prepareStatement("SELECT productions.date_end AS date, productions.total_cost AS total, productions.output AS weight FROM stock_history INNER JOIN productions ON (stock_history.production_id = productions.id)");
@@ -52,8 +52,8 @@ public class Stock extends DB {
             while (result.next()) {
                 base.addRow(new Object[]{
                     result.getString("date"),
-                    result.getString("total"),
-                    result.getString("weight") + " karung"
+                    String.format("Rp%,.0f", result.getDouble("total")).replaceAll(",", "."),
+                    result.getString("weight")
                 });
             }
             StockPanel.produksiPupukTable.setModel(base);

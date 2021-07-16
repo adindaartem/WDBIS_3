@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 import main.SalesPanel;
-import main.SuppliersPanel;
 import static models.DB.connect;
 
 /**
@@ -27,7 +26,7 @@ public class Sales extends DB {
         base.addColumn("Kode");
         base.addColumn("Nama");
         base.addColumn("Kontak");
-        base.addColumn("Berat Pupuk");
+        base.addColumn("Terjual (Karung)");
         base.addColumn("Total Bayar");
         base.addColumn("Tgl Bayar");
         try {
@@ -41,7 +40,7 @@ public class Sales extends DB {
                     result.getString("name"),
                     result.getString("contact"),
                     result.getString("weight"),
-                    result.getString("total_payment"),
+                    String.format("Rp%,.0f", result.getDouble("total_payment")).replaceAll(",", "."),
                     result.getString("payment_date")
                 });
             }
@@ -64,7 +63,7 @@ public class Sales extends DB {
             PreparedStatement statementUp = query.prepareStatement("UPDATE stock SET total = total + (SELECT weight FROM orders WHERE code=?)");
             statementUp.setString(1, code);
             statementUp.executeUpdate();
-            
+
             PreparedStatement statementInsert = query.prepareStatement("INSERT INTO stock_history (stock_id, sales_id) VALUES(1,(SELECT id FROM orders WHERE code=?))");
             statementInsert.setString(1, code);
             statementInsert.executeUpdate();
@@ -77,14 +76,12 @@ public class Sales extends DB {
     public static void update(String id, String date, String totalPayment) {
         try {
             Connection query = connect();
-          
+
             PreparedStatement statement = query.prepareStatement("UPDATE sales SET date=?, total_payment=? WHERE order_id=?");
             statement.setString(1, date);
             statement.setString(2, totalPayment);
             statement.setString(3, id);
             statement.executeUpdate();
-            
-            
 
         } catch (SQLException e) {
             e.printStackTrace();

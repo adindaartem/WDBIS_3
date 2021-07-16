@@ -59,15 +59,15 @@ public class Production extends DB {
         return dates;
     }
 
-    public static String getTotal(String id) {
-        String total = "";
+    public static double getTotal(String id) {
+        double total = 0;
         try {
             Connection query = connect();
             PreparedStatement statement = query.prepareStatement("SELECT total_cost FROM productions WHERE id = ?");
             statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                total = result.getString("total_cost");
+                total = result.getDouble("total_cost");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,7 +93,7 @@ public class Production extends DB {
                     result.getString("name"),
                     result.getString("amount"),
                     result.getString("unit"),
-                    result.getString("cost"),
+                    String.format("Rp%,.0f", result.getDouble("cost")).replaceAll(",", "."),
                     result.getString("supplierName")
                 });
             }

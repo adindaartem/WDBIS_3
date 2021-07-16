@@ -37,7 +37,7 @@ public class Order extends DB {
         base.addColumn("Tanggal");
         base.addColumn("Nama");
         base.addColumn("Kontak");
-        base.addColumn("Berat Pupuk (kg)");
+        base.addColumn("Pesanan (karung)");
         try {
             Statement query = connect().createStatement();
             ResultSet result = query.executeQuery("SELECT * FROM orders WHERE id NOT IN (SELECT order_id FROM sales)");
@@ -151,7 +151,7 @@ public class Order extends DB {
     public static void print() {
         try {
             Connection connection = connect();
-            JasperDesign jasperDesign = JRXmlLoader.load(new File("").getAbsolutePath()+ "/src/main/Orders.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load(new File("").getAbsolutePath() + "/src/main/Orders.jrxml");
             JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
             JasperPrint jp = JasperFillManager.fillReport(jr, null, connection);
             JasperViewer.viewReport(jp);
