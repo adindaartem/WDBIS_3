@@ -8,8 +8,12 @@ package main;
 import addPanel.AddUsersPanel;
 import java.awt.CardLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import static main.MainFrame.containerPanel;
 import models.Roles;
+import models.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -115,6 +119,34 @@ public class UsersPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_addUsersNvgActionPerformed
 
     private void changeUsersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeUsersNvgActionPerformed
+        String id = usersTable.getModel().getValueAt(usersTable.getSelectedRow(), 0).toString();
+        String nameVal = usersTable.getModel().getValueAt(usersTable.getSelectedRow(), 1).toString();
+        String usernameVal = usersTable.getModel().getValueAt(usersTable.getSelectedRow(), 2).toString();
+        String hashedPassword = "";
+
+        JTextField name = new JTextField();
+        JTextField username = new JTextField();
+        JTextField password = new JTextField();
+
+        name.setText(nameVal);
+        username.setText(usernameVal);
+
+        Object[] message = {
+            "Nama: ", name,
+            "Nama Pengguna: ", username,
+            "Kata Sandi: ", password
+        };
+
+        int option = JOptionPane.showConfirmDialog(null, message, "Ubah Pengguna", JOptionPane.OK_CANCEL_OPTION);
+
+        if (!password.getText().isEmpty()) {
+            hashedPassword = BCrypt.hashpw(password.getText(), BCrypt.gensalt());
+        }
+
+        if (option == 0) {
+            User.update(id, name.getText(), username.getText(), hashedPassword);
+            User.getAll();
+        }
 
     }//GEN-LAST:event_changeUsersNvgActionPerformed
 

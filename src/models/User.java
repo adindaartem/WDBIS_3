@@ -34,6 +34,28 @@ public class User extends DB {
         }
     }
 
+    public static void update(String id, String name, String username, String password) {
+        try {
+            Connection query = connect();
+            if (password.isEmpty()) {
+                PreparedStatement statement = query.prepareStatement("UPDATE users SET name=?, username=? WHERE id=?");
+                statement.setString(1, name);
+                statement.setString(2, username);
+                statement.setString(3, id);
+                statement.executeUpdate();
+            } else {
+                PreparedStatement statement = query.prepareStatement("UPDATE users SET name=?, username=?, password=? WHERE id=?");
+                statement.setString(1, name);
+                statement.setString(2, username);
+                statement.setString(3, password);
+                statement.setString(4, id);
+                statement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void getAll() {
         DefaultTableModel base = new DefaultTableModel();
         base.addColumn("id");
