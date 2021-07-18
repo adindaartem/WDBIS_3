@@ -60,7 +60,7 @@ public class Sales extends DB {
             statement.setString(3, total_payment);
             statement.executeUpdate();
 
-            PreparedStatement statementUp = query.prepareStatement("UPDATE stock SET total = total + (SELECT weight FROM orders WHERE code=?)");
+            PreparedStatement statementUp = query.prepareStatement("UPDATE stock SET total = total - (SELECT weight FROM orders WHERE code=?)");
             statementUp.setString(1, code);
             statementUp.executeUpdate();
 
@@ -83,6 +83,22 @@ public class Sales extends DB {
             statement.setString(3, id);
             statement.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void delete(String id) {
+        try {
+            Connection query = connect();
+
+            PreparedStatement statementUp = query.prepareStatement("UPDATE stock SET total = total + (SELECT weight FROM orders WHERE id=?)");
+            statementUp.setString(1, id);
+            statementUp.executeUpdate();
+
+            PreparedStatement statement = query.prepareStatement("DELETE FROM sales WHERE order_id=?");
+            statement.setString(1, id);
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

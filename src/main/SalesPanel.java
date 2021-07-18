@@ -50,6 +50,7 @@ public class SalesPanel extends javax.swing.JPanel {
         jLabel30 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         salesTable = new javax.swing.JTable();
+        deleteButtonNvg = new javax.swing.JButton();
 
         jLabel31.setText("Info");
 
@@ -81,6 +82,13 @@ public class SalesPanel extends javax.swing.JPanel {
         ));
         jScrollPane7.setViewportView(salesTable);
 
+        deleteButtonNvg.setText("Hapus");
+        deleteButtonNvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonNvgActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,6 +97,8 @@ public class SalesPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(deleteButtonNvg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(changeSalesNvg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addSalesNvg))
@@ -109,7 +119,8 @@ public class SalesPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addSalesNvg)
-                    .addComponent(changeSalesNvg))
+                    .addComponent(changeSalesNvg)
+                    .addComponent(deleteButtonNvg))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -131,7 +142,7 @@ public class SalesPanel extends javax.swing.JPanel {
 
     private void changeSalesNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeSalesNvgActionPerformed
         String id = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 0).toString();
-        String totalVal = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 5).toString();
+        String totalVal = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 5).toString().replaceAll("[^0-9]", "");
         String dateVal = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 6).toString();
         JTextField total = new JTextField();
 
@@ -147,9 +158,16 @@ public class SalesPanel extends javax.swing.JPanel {
         Sales.getAll();
     }//GEN-LAST:event_changeSalesNvgActionPerformed
 
+    private void deleteButtonNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonNvgActionPerformed
+        String id = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 0).toString();
+        Sales.delete(id);
+        Sales.getAll();
+    }//GEN-LAST:event_deleteButtonNvgActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSalesNvg;
     private javax.swing.JButton changeSalesNvg;
+    private javax.swing.JButton deleteButtonNvg;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;

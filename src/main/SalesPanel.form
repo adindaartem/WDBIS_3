@@ -20,6 +20,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+                      <Component id="deleteButtonNvg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="changeSalesNvg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addSalesNvg" min="-2" max="-2" attributes="0"/>
@@ -46,6 +48,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addSalesNvg" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="changeSalesNvg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deleteButtonNvg" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
@@ -113,5 +116,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="deleteButtonNvg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hapus"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonNvgActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
