@@ -449,6 +449,7 @@ public class MainFrame extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "suppliersCard");
         Supplier.getAll();
+        SuppliersPanel.totalSuppliersLabel.setText(Supplier.getTotal());
     }//GEN-LAST:event_suppliersButtonActionPerformed
 
     private void stockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockButtonActionPerformed
@@ -457,13 +458,13 @@ public class MainFrame extends javax.swing.JFrame {
         Stock.getSales();
         Stock.getProductions();
         StockPanel.stockLabel.setText(Stock.getStock() + " karung");
-
     }//GEN-LAST:event_stockButtonActionPerformed
 
     private void ordersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordersButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "ordersCard");
         Order.getAll();
+        orderPanel.totalOrdersLabel.setText(Order.getTotal());
     }//GEN-LAST:event_ordersButtonActionPerformed
 
     private void materialsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialsButtonActionPerformed
@@ -476,12 +477,14 @@ public class MainFrame extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "salesCard");
         Sales.getAll();
+        SalesPanel.totalSalesLabel.setText(Sales.getTotal());
     }//GEN-LAST:event_salesButtonActionPerformed
 
     private void usersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "usersCard");
         User.getAll();
+        UsersPanel.totalUsersPanel.setText(User.getTotal());
     }//GEN-LAST:event_usersButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

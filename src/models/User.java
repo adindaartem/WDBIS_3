@@ -117,4 +117,20 @@ public class User extends DB {
             e.printStackTrace();
         }
     }
+
+    public static String getTotal() {
+        String total = "";
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT count(id) AS total FROM users");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                total = result.getString("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return total;
+    }
 }

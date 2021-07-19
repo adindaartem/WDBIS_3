@@ -100,4 +100,20 @@ public class Supplier extends DB {
 
         return names;
     }
+
+    public static String getTotal() {
+        String total = "";
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT count(id) - 1 AS total FROM suppliers");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                total = result.getString("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return total;
+    }
 }

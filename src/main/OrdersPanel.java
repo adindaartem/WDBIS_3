@@ -41,7 +41,7 @@ public class OrdersPanel extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        totalOrdersLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ordersTable = new javax.swing.JTable();
@@ -74,7 +74,7 @@ public class OrdersPanel extends javax.swing.JPanel {
 
         jLabel21.setText("TOTAL PESANAN");
 
-        jLabel22.setText("12/04/2021");
+        totalOrdersLabel.setText("0");
 
         jLabel1.setText("Daftar Pesanan Pupuk");
 
@@ -120,7 +120,7 @@ public class OrdersPanel extends javax.swing.JPanel {
                             .addGap(86, 86, 86)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel21)
-                                .addComponent(jLabel22)))))
+                                .addComponent(totalOrdersLabel)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -136,7 +136,7 @@ public class OrdersPanel extends javax.swing.JPanel {
                     .addComponent(editOrdersNvg)
                     .addComponent(deleteButton)
                     .addComponent(printButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel19)
@@ -145,8 +145,8 @@ public class OrdersPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel21)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel22)))
-                .addGap(31, 31, 31))
+                        .addComponent(totalOrdersLabel)))
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,9 +205,9 @@ public class OrdersPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JScrollPane jScrollPane4;
     public static javax.swing.JTable ordersTable;
     private javax.swing.JButton printButton;
+    public static javax.swing.JLabel totalOrdersLabel;
     // End of variables declaration//GEN-END:variables
 }

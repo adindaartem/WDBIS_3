@@ -23,8 +23,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" alignment="0" min="-2" pref="596" max="-2" attributes="0"/>
-                      <Component id="jLabel28" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="jLabel29" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="34" max="32767" attributes="0"/>
@@ -40,21 +38,12 @@
               <Component id="jScrollPane6" min="-2" pref="242" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="editMaterialNvg" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace pref="100" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel29">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Lainnya"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel27">
       <Properties>
         <Property name="text" type="java.lang.String" value="Stok Bahan"/>
@@ -82,11 +71,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel28">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Info"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="editMaterialNvg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ubah"/>

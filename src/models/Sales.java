@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 import main.SalesPanel;
 import static models.DB.connect;
@@ -30,9 +29,10 @@ public class Sales extends DB {
         base.addColumn("Total Bayar");
         base.addColumn("Tgl Bayar");
         try {
-            Statement query = connect().createStatement();
-            ResultSet result = query.executeQuery("SELECT id, code, name, contact, weight, total_payment, sales.date AS payment_date "
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT id, code, name, contact, weight, total_payment, sales.date AS payment_date "
                     + "FROM sales INNER JOIN orders ON sales.order_id = orders.id");
+            ResultSet result = statement.executeQuery();
             while (result.next()) {
                 base.addRow(new Object[]{
                     result.getString("id"),
@@ -102,5 +102,21 @@ public class Sales extends DB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getTotal() {
+        String total = "";
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT count(order_id) AS total FROM sales");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                total = result.getString("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return total;
     }
 }

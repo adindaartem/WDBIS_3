@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,8 +38,9 @@ public class Order extends DB {
         base.addColumn("Kontak");
         base.addColumn("Pesanan (karung)");
         try {
-            Statement query = connect().createStatement();
-            ResultSet result = query.executeQuery("SELECT * FROM orders WHERE id NOT IN (SELECT order_id FROM sales)");
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT * FROM orders WHERE id NOT IN (SELECT order_id FROM sales)");
+            ResultSet result = statement.executeQuery();
             while (result.next()) {
                 base.addRow(new Object[]{
                     result.getString("id"),
@@ -136,8 +136,9 @@ public class Order extends DB {
     public static ArrayList getCodes() {
         ArrayList<String> codes = new ArrayList<String>();
         try {
-            Statement query = connect().createStatement();
-            ResultSet result = query.executeQuery("SELECT code FROM orders WHERE id NOT IN (SELECT order_id FROM sales) ");
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT code FROM orders WHERE id NOT IN (SELECT order_id FROM sales) ");
+            ResultSet result = statement.executeQuery();
             while (result.next()) {
                 codes.add(result.getString("code"));
             }
@@ -158,5 +159,21 @@ public class Order extends DB {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getTotal() {
+        String total = "";
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("SELECT count(id) AS total FROM orders");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                total = result.getString("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return total;
     }
 }
