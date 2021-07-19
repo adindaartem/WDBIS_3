@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import static main.ProductionsPanel.productionDateTable;
 import models.Material;
 import models.Order;
@@ -429,21 +428,19 @@ public class MainFrame extends javax.swing.JFrame {
         if (productionDateTable.getRowCount() > 0) {
             productionDateTable.setRowSelectionInterval(0, 0);
 
-            productionDateTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-                public void valueChanged(ListSelectionEvent event) {
-                    int row = productionDateTable.getSelectedRow();
-                    if (row == -1) {
-                        row = 0;
-                    }
-                    String id = productionDateTable.getModel().getValueAt(row, 0).toString();
-                    Production.getDetails(id);
-
-                    Map<String, String> dates = Production.getDate(id);
-
-                    ProductionsPanel.dateStartLabel.setText(dates.keySet().toArray()[0].toString());
-                    ProductionsPanel.dateEndLabel.setText(dates.get(dates.keySet().toArray()[0].toString()));
-                    ProductionsPanel.totalLabel.setText(String.format("Rp%,.0f", Production.getTotal(id)).replaceAll(",", "."));
+            productionDateTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+                int row = productionDateTable.getSelectedRow();
+                if (row == -1) {
+                    row = 0;
                 }
+                String id = productionDateTable.getModel().getValueAt(row, 0).toString();
+                Production.getDetails(id);
+
+                Map<String, String> dates = Production.getDate(id);
+
+                ProductionsPanel.dateStartLabel.setText(dates.keySet().toArray()[0].toString());
+                ProductionsPanel.dateEndLabel.setText(dates.get(dates.keySet().toArray()[0].toString()));
+                ProductionsPanel.totalLabel.setText(String.format("Rp%,.0f", Production.getTotal(id)).replaceAll(",", "."));
             });
         }
     }//GEN-LAST:event_productionsButtonActionPerformed

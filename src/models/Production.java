@@ -24,15 +24,15 @@ public class Production extends DB {
     public static void getAll() {
         DefaultTableModel base = new DefaultTableModel();
         base.addColumn("id");
-        base.addColumn("Tanggal");
+        base.addColumn("Kode");
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT id,date_start FROM productions");
+            PreparedStatement statement = query.prepareStatement("SELECT id, code FROM productions");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 base.addRow(new Object[]{
                     result.getString("id"),
-                    result.getString("date_start")
+                    result.getString("code")
                 });
             }
             ProductionsPanel.productionDateTable.setModel(base);
@@ -46,7 +46,7 @@ public class Production extends DB {
         Map<String, String> dates = new HashMap<>();
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT date_start,date_end FROM productions WHERE id = ?");
+            PreparedStatement statement = query.prepareStatement("SELECT date_start, date_end FROM productions WHERE id = ?");
             statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
@@ -119,6 +119,10 @@ public class Production extends DB {
 
             if (rs.next()) {
                 id = rs.getInt(1);
+                PreparedStatement statementUp = query.prepareStatement("UPDATE productions SET code=CONCAT('PR',LPAD(?, 4, '0')) WHERE ID=?");
+                statementUp.setString(1, Integer.toString(id));
+                statementUp.setString(2, Integer.toString(id));
+                statementUp.executeUpdate();
             }
 
             PreparedStatement stockUpdateStatement = query.prepareStatement("UPDATE stock SET total = total + ?");
