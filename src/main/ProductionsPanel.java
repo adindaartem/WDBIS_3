@@ -43,7 +43,6 @@ public class ProductionsPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         addProductionNvg = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         productionDetailsTable = new javax.swing.JTable();
         dateStartLabel = new javax.swing.JLabel();
@@ -98,8 +97,6 @@ public class ProductionsPanel extends javax.swing.JPanel {
 
         jLabel6.setText("BIAYA PRODUKSI");
 
-        jButton5.setText("Ubah");
-
         jScrollPane2.setViewportView(productionDetailsTable);
 
         dateStartLabel.setText("-");
@@ -123,10 +120,7 @@ public class ProductionsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addProductionNvg))
+                    .addComponent(addProductionNvg)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -178,9 +172,7 @@ public class ProductionsPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addProductionNvg)
-                    .addComponent(jButton5))
+                .addComponent(addProductionNvg)
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -230,7 +222,6 @@ public class ProductionsPanel extends javax.swing.JPanel {
     private javax.swing.JButton addProductionNvg;
     public static javax.swing.JLabel dateEndLabel;
     public static javax.swing.JLabel dateStartLabel;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;

@@ -36,8 +36,8 @@ public class OrdersPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         addOrdersNvg = new javax.swing.JButton();
-        editOrdersNvg = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
+        changeOrdersNvg = new javax.swing.JButton();
+        deleteOrdersNvg = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -45,7 +45,7 @@ public class OrdersPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ordersTable = new javax.swing.JTable();
-        printButton = new javax.swing.JButton();
+        printOrdersNvg = new javax.swing.JButton();
 
         addOrdersNvg.setText("Tambah");
         addOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
@@ -54,17 +54,17 @@ public class OrdersPanel extends javax.swing.JPanel {
             }
         });
 
-        editOrdersNvg.setText("Ubah");
-        editOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
+        changeOrdersNvg.setText("Ubah");
+        changeOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editOrdersNvgActionPerformed(evt);
+                changeOrdersNvgActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("Hapus");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteOrdersNvg.setText("Hapus");
+        deleteOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
+                deleteOrdersNvgActionPerformed(evt);
             }
         });
 
@@ -88,10 +88,10 @@ public class OrdersPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(ordersTable);
 
-        printButton.setText("Print");
-        printButton.addActionListener(new java.awt.event.ActionListener() {
+        printOrdersNvg.setText("Print");
+        printOrdersNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printButtonActionPerformed(evt);
+                printOrdersNvgActionPerformed(evt);
             }
         });
 
@@ -103,11 +103,11 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(printButton)
+                        .addComponent(printOrdersNvg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteButton)
+                        .addComponent(deleteOrdersNvg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editOrdersNvg)
+                        .addComponent(changeOrdersNvg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addOrdersNvg))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,9 +133,9 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addOrdersNvg)
-                    .addComponent(editOrdersNvg)
-                    .addComponent(deleteButton)
-                    .addComponent(printButton))
+                    .addComponent(changeOrdersNvg)
+                    .addComponent(deleteOrdersNvg)
+                    .addComponent(printOrdersNvg))
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -155,7 +155,7 @@ public class OrdersPanel extends javax.swing.JPanel {
         cl.show(MainFrame.containerPanel, "addOrdersCard");
     }//GEN-LAST:event_addOrdersNvgActionPerformed
 
-    private void editOrdersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOrdersNvgActionPerformed
+    private void changeOrdersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeOrdersNvgActionPerformed
         String id = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 0).toString();
         String dateVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 2).toString();
         String nameVal = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 3).toString();
@@ -185,29 +185,37 @@ public class OrdersPanel extends javax.swing.JPanel {
 
         Order.update(id, name.getText(), datePick.getText(), contact.getText(), weight.getText());
         Order.getAll();
-    }//GEN-LAST:event_editOrdersNvgActionPerformed
+        OrdersPanel.changeOrdersNvg.setEnabled(false);
+        OrdersPanel.deleteOrdersNvg.setEnabled(false);
+    }//GEN-LAST:event_changeOrdersNvgActionPerformed
 
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+    private void deleteOrdersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteOrdersNvgActionPerformed
         String id = ordersTable.getModel().getValueAt(ordersTable.getSelectedRow(), 0).toString();
         Order.delete(id);
         Order.getAll();
-    }//GEN-LAST:event_deleteButtonActionPerformed
+        if (Order.getTotal().equals("0")) {
+            OrdersPanel.printOrdersNvg.setEnabled(false);
+        }
+        totalOrdersLabel.setText(Order.getTotal());
+        OrdersPanel.changeOrdersNvg.setEnabled(false);
+        OrdersPanel.deleteOrdersNvg.setEnabled(false);
+    }//GEN-LAST:event_deleteOrdersNvgActionPerformed
 
-    private void printButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printButtonActionPerformed
+    private void printOrdersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printOrdersNvgActionPerformed
         Order.print();
-    }//GEN-LAST:event_printButtonActionPerformed
+    }//GEN-LAST:event_printOrdersNvgActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addOrdersNvg;
-    private javax.swing.JButton deleteButton;
-    private javax.swing.JButton editOrdersNvg;
+    public static javax.swing.JButton addOrdersNvg;
+    public static javax.swing.JButton changeOrdersNvg;
+    public static javax.swing.JButton deleteOrdersNvg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JScrollPane jScrollPane4;
     public static javax.swing.JTable ordersTable;
-    private javax.swing.JButton printButton;
+    public static javax.swing.JButton printOrdersNvg;
     public static javax.swing.JLabel totalOrdersLabel;
     // End of variables declaration//GEN-END:variables
 }

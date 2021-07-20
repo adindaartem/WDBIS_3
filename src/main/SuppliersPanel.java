@@ -32,13 +32,14 @@ public class SuppliersPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollBar1 = new javax.swing.JScrollBar();
         suppliersPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         suppliersTable = new javax.swing.JTable();
         addSupliersNvg = new javax.swing.JButton();
-        editSupliersNvg = new javax.swing.JButton();
-        deleteSupplierButton = new javax.swing.JButton();
+        changeSuppliersNvg = new javax.swing.JButton();
+        deleteSuppliersNvg = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -63,17 +64,17 @@ public class SuppliersPanel extends javax.swing.JPanel {
             }
         });
 
-        editSupliersNvg.setText("Ubah");
-        editSupliersNvg.addActionListener(new java.awt.event.ActionListener() {
+        changeSuppliersNvg.setText("Ubah");
+        changeSuppliersNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editSupliersNvgActionPerformed(evt);
+                changeSuppliersNvgActionPerformed(evt);
             }
         });
 
-        deleteSupplierButton.setText("Hapus");
-        deleteSupplierButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteSuppliersNvg.setText("Hapus");
+        deleteSuppliersNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteSupplierButtonActionPerformed(evt);
+                deleteSuppliersNvgActionPerformed(evt);
             }
         });
 
@@ -94,9 +95,9 @@ public class SuppliersPanel extends javax.swing.JPanel {
                 .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(suppliersPanelLayout.createSequentialGroup()
-                            .addComponent(deleteSupplierButton)
+                            .addComponent(deleteSuppliersNvg)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(editSupliersNvg)
+                            .addComponent(changeSuppliersNvg)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(addSupliersNvg))
                         .addGroup(suppliersPanelLayout.createSequentialGroup()
@@ -108,26 +109,23 @@ public class SuppliersPanel extends javax.swing.JPanel {
                         .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(totalSuppliersLabel)))
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, suppliersPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         suppliersPanelLayout.setVerticalGroup(
             suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(suppliersPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addSupliersNvg)
-                    .addComponent(editSupliersNvg)
-                    .addComponent(deleteSupplierButton))
-                .addGap(82, 82, 82)
+                    .addComponent(changeSuppliersNvg)
+                    .addComponent(deleteSuppliersNvg))
+                .addGap(86, 86, 86)
                 .addGroup(suppliersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel17))
@@ -135,7 +133,7 @@ public class SuppliersPanel extends javax.swing.JPanel {
                 .addComponent(jLabel13)
                 .addGap(4, 4, 4)
                 .addComponent(totalSuppliersLabel)
-                .addGap(0, 0, 0))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -144,28 +142,28 @@ public class SuppliersPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 608, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(suppliersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(suppliersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(suppliersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addSupliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupliersNvgActionPerformed
-        CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
-        cl.show(MainFrame.containerPanel, "addSupliersCard");
-    }//GEN-LAST:event_addSupliersNvgActionPerformed
+    private void deleteSuppliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSuppliersNvgActionPerformed
+        String id = suppliersTable.getModel().getValueAt(suppliersTable.getSelectedRow(), 0).toString();
+        Supplier.delete(id);
+        Supplier.getAll();
 
-    private void editSupliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSupliersNvgActionPerformed
+        SuppliersPanel.changeSuppliersNvg.setEnabled(false);
+        SuppliersPanel.deleteSuppliersNvg.setEnabled(false);
+    }//GEN-LAST:event_deleteSuppliersNvgActionPerformed
+
+    private void changeSuppliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeSuppliersNvgActionPerformed
         String id = suppliersTable.getModel().getValueAt(suppliersTable.getSelectedRow(), 0).toString();
         String nameVal = suppliersTable.getModel().getValueAt(suppliersTable.getSelectedRow(), 1).toString();
         String addressVal = suppliersTable.getModel().getValueAt(suppliersTable.getSelectedRow(), 2).toString();
@@ -191,22 +189,25 @@ public class SuppliersPanel extends javax.swing.JPanel {
         }
 
         Supplier.getAll();
-    }//GEN-LAST:event_editSupliersNvgActionPerformed
 
-    private void deleteSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSupplierButtonActionPerformed
-        String id = suppliersTable.getModel().getValueAt(suppliersTable.getSelectedRow(), 0).toString();
-        Supplier.delete(id);
-        Supplier.getAll();
-    }//GEN-LAST:event_deleteSupplierButtonActionPerformed
+        SuppliersPanel.changeSuppliersNvg.setEnabled(false);
+        SuppliersPanel.deleteSuppliersNvg.setEnabled(false);
+    }//GEN-LAST:event_changeSuppliersNvgActionPerformed
+
+    private void addSupliersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSupliersNvgActionPerformed
+        CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
+        cl.show(MainFrame.containerPanel, "addSupliersCard");
+    }//GEN-LAST:event_addSupliersNvgActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addSupliersNvg;
-    private javax.swing.JButton deleteSupplierButton;
-    private javax.swing.JButton editSupliersNvg;
+    public static javax.swing.JButton addSupliersNvg;
+    public static javax.swing.JButton changeSuppliersNvg;
+    public static javax.swing.JButton deleteSuppliersNvg;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel suppliersPanel;
     public static javax.swing.JTable suppliersTable;

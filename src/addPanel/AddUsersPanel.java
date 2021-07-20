@@ -7,6 +7,7 @@ package addPanel;
 
 import java.awt.CardLayout;
 import static main.MainFrame.containerPanel;
+import main.UsersPanel;
 import models.User;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -132,6 +133,8 @@ public class AddUsersPanel extends javax.swing.JPanel {
         String role = roleComboBox.getSelectedItem().toString().split("[)]")[0];
 
         User.create(name, username, hashed, role);
+        UsersPanel.totalUsersPanel.setText(User.getTotal());
+        cancelButtonActionPerformed(evt);
     }//GEN-LAST:event_createButtonActionPerformed
 
     private void clearForm() {

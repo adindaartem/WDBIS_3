@@ -8,6 +8,7 @@ package addPanel;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import java.awt.CardLayout;
 import main.MainFrame;
+import main.OrdersPanel;
 import models.Order;
 
 /**
@@ -142,6 +143,8 @@ public class AddOrdersPanel extends javax.swing.JPanel {
 
         Order.create(name, date, contact, weight);
         cancelOrdersButtonActionPerformed(evt);
+        OrdersPanel.printOrdersNvg.setEnabled(true);
+        OrdersPanel.totalOrdersLabel.setText(Order.getTotal());
     }//GEN-LAST:event_addOrdersButtonActionPerformed
 
     private void clearForm() {

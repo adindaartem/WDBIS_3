@@ -101,7 +101,7 @@ public class MaterialsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_editMaterialNvgActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton editMaterialNvg;
+    public static javax.swing.JButton editMaterialNvg;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JScrollPane jScrollPane6;
     public static javax.swing.JTable materialsTable;

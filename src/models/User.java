@@ -34,6 +34,17 @@ public class User extends DB {
         }
     }
 
+    public static void delete(String id) {
+        try {
+            Connection query = connect();
+            PreparedStatement statement = query.prepareStatement("DELETE FROM users WHERE id=?");
+            statement.setString(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void update(String id, String name, String username, String password) {
         try {
             Connection query = connect();

@@ -46,6 +46,7 @@ public class UsersPanel extends javax.swing.JPanel {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         totalUsersPanel = new javax.swing.JLabel();
+        deleteUsersNvg = new javax.swing.JButton();
 
         addUsersNvg.setText("Tambah");
         addUsersNvg.addActionListener(new java.awt.event.ActionListener() {
@@ -81,31 +82,38 @@ public class UsersPanel extends javax.swing.JPanel {
 
         totalUsersPanel.setText("0");
 
+        deleteUsersNvg.setText("Hapus");
+        deleteUsersNvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteUsersNvgActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deleteUsersNvg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(changeUsersNvg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addUsersNvg))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel30)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(86, 86, 86)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel21)
-                                    .addComponent(totalUsersPanel))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel30)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(86, 86, 86)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel21)
+                                .addComponent(totalUsersPanel)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +125,8 @@ public class UsersPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addUsersNvg)
-                    .addComponent(changeUsersNvg))
+                    .addComponent(changeUsersNvg)
+                    .addComponent(deleteUsersNvg))
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -168,11 +177,23 @@ public class UsersPanel extends javax.swing.JPanel {
             User.getAll();
         }
 
+        UsersPanel.changeUsersNvg.setEnabled(false);
+        UsersPanel.deleteUsersNvg.setEnabled(false);
     }//GEN-LAST:event_changeUsersNvgActionPerformed
 
+    private void deleteUsersNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUsersNvgActionPerformed
+        String id = usersTable.getModel().getValueAt(usersTable.getSelectedRow(), 0).toString();
+        User.delete(id);
+        User.getAll();
+        UsersPanel.totalUsersPanel.setText(User.getTotal());
+        UsersPanel.changeUsersNvg.setEnabled(false);
+        UsersPanel.deleteUsersNvg.setEnabled(false);
+    }//GEN-LAST:event_deleteUsersNvgActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addUsersNvg;
-    private javax.swing.JButton changeUsersNvg;
+    public static javax.swing.JButton addUsersNvg;
+    public static javax.swing.JButton changeUsersNvg;
+    public static javax.swing.JButton deleteUsersNvg;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

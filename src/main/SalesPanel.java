@@ -48,7 +48,7 @@ public class SalesPanel extends javax.swing.JPanel {
         jLabel30 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         salesTable = new javax.swing.JTable();
-        deleteButtonNvg = new javax.swing.JButton();
+        deleteSalesNvg = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -80,10 +80,10 @@ public class SalesPanel extends javax.swing.JPanel {
         ));
         jScrollPane7.setViewportView(salesTable);
 
-        deleteButtonNvg.setText("Hapus");
-        deleteButtonNvg.addActionListener(new java.awt.event.ActionListener() {
+        deleteSalesNvg.setText("Hapus");
+        deleteSalesNvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonNvgActionPerformed(evt);
+                deleteSalesNvgActionPerformed(evt);
             }
         });
 
@@ -104,7 +104,7 @@ public class SalesPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(deleteButtonNvg)
+                            .addComponent(deleteSalesNvg)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(changeSalesNvg)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -133,7 +133,7 @@ public class SalesPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addSalesNvg)
                     .addComponent(changeSalesNvg)
-                    .addComponent(deleteButtonNvg))
+                    .addComponent(deleteSalesNvg))
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -157,6 +157,9 @@ public class SalesPanel extends javax.swing.JPanel {
         AddSalesPanel.nameLabel.setText(order.get("name"));
         AddSalesPanel.weightLabel.setText(order.get("weight") + " karung");
         AddSalesPanel.dateLabel.setText(order.get("date"));
+        if (Order.getTotal().equals("0")) {
+            SalesPanel.addSalesNvg.setEnabled(false);
+        }
     }//GEN-LAST:event_addSalesNvgActionPerformed
 
     private void changeSalesNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeSalesNvgActionPerformed
@@ -175,18 +178,23 @@ public class SalesPanel extends javax.swing.JPanel {
 
         Sales.update(id, date.getText(), total.getText());
         Sales.getAll();
+        SalesPanel.changeSalesNvg.setEnabled(false);
+        SalesPanel.deleteSalesNvg.setEnabled(false);
     }//GEN-LAST:event_changeSalesNvgActionPerformed
 
-    private void deleteButtonNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonNvgActionPerformed
+    private void deleteSalesNvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSalesNvgActionPerformed
         String id = salesTable.getModel().getValueAt(salesTable.getSelectedRow(), 0).toString();
         Sales.delete(id);
         Sales.getAll();
-    }//GEN-LAST:event_deleteButtonNvgActionPerformed
+        SalesPanel.totalSalesLabel.setText(Sales.getTotal());
+        SalesPanel.changeSalesNvg.setEnabled(false);
+        SalesPanel.deleteSalesNvg.setEnabled(false);
+    }//GEN-LAST:event_deleteSalesNvgActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addSalesNvg;
-    private javax.swing.JButton changeSalesNvg;
-    private javax.swing.JButton deleteButtonNvg;
+    public static javax.swing.JButton addSalesNvg;
+    public static javax.swing.JButton changeSalesNvg;
+    public static javax.swing.JButton deleteSalesNvg;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

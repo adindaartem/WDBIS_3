@@ -20,11 +20,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="printButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="printOrdersNvg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="deleteOrdersNvg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="editOrdersNvg" min="-2" max="-2" attributes="0"/>
+                      <Component id="changeOrdersNvg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addOrdersNvg" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -58,9 +58,9 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addOrdersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="editOrdersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="printButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="changeOrdersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deleteOrdersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="printOrdersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -88,22 +88,31 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addOrdersNvgActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="editOrdersNvg">
+    <Component class="javax.swing.JButton" name="changeOrdersNvg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ubah"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editOrdersNvgActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeOrdersNvgActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="deleteButton">
+    <Component class="javax.swing.JButton" name="deleteOrdersNvg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hapus"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteOrdersNvgActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel19">
       <Properties>
@@ -155,13 +164,16 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="printButton">
+    <Component class="javax.swing.JButton" name="printOrdersNvg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Print"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printOrdersNvgActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

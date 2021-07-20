@@ -426,7 +426,6 @@ public class MainFrame extends javax.swing.JFrame {
         cl.show(containerPanel, "productionsCard");
         Production.getAll();
         if (productionDateTable.getRowCount() > 0) {
-            productionDateTable.setRowSelectionInterval(0, 0);
 
             productionDateTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
                 int row = productionDateTable.getSelectedRow();
@@ -450,6 +449,15 @@ public class MainFrame extends javax.swing.JFrame {
         cl.show(containerPanel, "suppliersCard");
         Supplier.getAll();
         SuppliersPanel.totalSuppliersLabel.setText(Supplier.getTotal());
+
+        SuppliersPanel.changeSuppliersNvg.setEnabled(false);
+        SuppliersPanel.deleteSuppliersNvg.setEnabled(false);
+
+        SuppliersPanel.suppliersTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+            SuppliersPanel.changeSuppliersNvg.setEnabled(true);
+            SuppliersPanel.deleteSuppliersNvg.setEnabled(true);
+        });
+
     }//GEN-LAST:event_suppliersButtonActionPerformed
 
     private void stockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockButtonActionPerformed
@@ -465,19 +473,52 @@ public class MainFrame extends javax.swing.JFrame {
         cl.show(containerPanel, "ordersCard");
         Order.getAll();
         orderPanel.totalOrdersLabel.setText(Order.getTotal());
+
+        OrdersPanel.changeOrdersNvg.setEnabled(false);
+        OrdersPanel.deleteOrdersNvg.setEnabled(false);
+        OrdersPanel.printOrdersNvg.setEnabled(false);
+
+        OrdersPanel.ordersTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+            OrdersPanel.changeOrdersNvg.setEnabled(true);
+            OrdersPanel.deleteOrdersNvg.setEnabled(true);
+        });
+        if (!Order.getTotal().equals("0")) {
+            OrdersPanel.printOrdersNvg.setEnabled(true);
+        }
+
     }//GEN-LAST:event_ordersButtonActionPerformed
 
     private void materialsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialsButtonActionPerformed
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "materialsCard");
         Material.getAll();
+
+        MaterialsPanel.editMaterialNvg.setEnabled(false);
+
+        MaterialsPanel.materialsTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+            MaterialsPanel.editMaterialNvg.setEnabled(true);
+        });
     }//GEN-LAST:event_materialsButtonActionPerformed
 
     private void salesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesButtonActionPerformed
+
         CardLayout cl = (CardLayout) (containerPanel.getLayout());
         cl.show(containerPanel, "salesCard");
         Sales.getAll();
+
+        SalesPanel.addSalesNvg.setEnabled(false);
+        SalesPanel.changeSalesNvg.setEnabled(false);
+        SalesPanel.deleteSalesNvg.setEnabled(false);
+
+        SalesPanel.salesTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+            SalesPanel.changeSalesNvg.setEnabled(true);
+            SalesPanel.deleteSalesNvg.setEnabled(true);
+        });
+
         SalesPanel.totalSalesLabel.setText(Sales.getTotal());
+        if (!Order.getTotal().equals("0")) {
+            SalesPanel.addSalesNvg.setEnabled(true);
+        }
     }//GEN-LAST:event_salesButtonActionPerformed
 
     private void usersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersButtonActionPerformed
@@ -485,6 +526,14 @@ public class MainFrame extends javax.swing.JFrame {
         cl.show(containerPanel, "usersCard");
         User.getAll();
         UsersPanel.totalUsersPanel.setText(User.getTotal());
+
+        UsersPanel.changeUsersNvg.setEnabled(false);
+        UsersPanel.deleteUsersNvg.setEnabled(false);
+
+        UsersPanel.usersTable.getSelectionModel().addListSelectionListener((ListSelectionEvent event) -> {
+            UsersPanel.changeUsersNvg.setEnabled(true);
+            UsersPanel.deleteUsersNvg.setEnabled(true);
+        });
     }//GEN-LAST:event_usersButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

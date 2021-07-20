@@ -165,7 +165,7 @@ public class Order extends DB {
         String total = "";
         try {
             Connection query = connect();
-            PreparedStatement statement = query.prepareStatement("SELECT count(id) AS total FROM orders");
+            PreparedStatement statement = query.prepareStatement("SELECT count(id) AS total FROM orders WHERE id NOT IN (SELECT order_id FROM sales)");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 total = result.getString("total");

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JScrollBar" name="jScrollBar1">
+    </Component>
+  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -18,20 +22,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <EmptySpace min="0" pref="608" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="suppliersPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+              <Component id="suppliersPanel" alignment="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="495" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="470" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
                   <Component id="suppliersPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -50,9 +49,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="deleteSupplierButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="deleteSuppliersNvg" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="editSupliersNvg" min="-2" max="-2" attributes="0"/>
+                              <Component id="changeSuppliersNvg" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="addSupliersNvg" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -70,13 +69,9 @@
                           </Group>
                       </Group>
                       <Component id="jLabel13" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" alignment="0" min="-2" pref="596" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jScrollPane3" min="-2" pref="596" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -85,15 +80,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="237" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="addSupliersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="editSupliersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="deleteSupplierButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="changeSuppliersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="deleteSuppliersNvg" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -102,7 +97,7 @@
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Component id="totalSuppliersLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -145,22 +140,31 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addSupliersNvgActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="editSupliersNvg">
+        <Component class="javax.swing.JButton" name="changeSuppliersNvg">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ubah"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editSupliersNvgActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeSuppliersNvgActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="deleteSupplierButton">
+        <Component class="javax.swing.JButton" name="deleteSuppliersNvg">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hapus"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteSupplierButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteSuppliersNvgActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>

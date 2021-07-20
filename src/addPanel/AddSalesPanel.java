@@ -8,9 +8,12 @@ package addPanel;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import java.awt.CardLayout;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import main.MainFrame;
+import main.SalesPanel;
 import models.Order;
 import models.Sales;
+import models.Stock;
 
 /**
  *
@@ -177,6 +180,9 @@ public class AddSalesPanel extends javax.swing.JPanel {
         CardLayout cl = (CardLayout) (MainFrame.containerPanel.getLayout());
         cl.show(MainFrame.containerPanel, "salesCard");
         Sales.getAll();
+        if (Order.getTotal().equals("0")) {
+            SalesPanel.addSalesNvg.setEnabled(false);
+        }
     }//GEN-LAST:event_cancelSalesButtonActionPerformed
 
     private void orderListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_orderListItemStateChanged
@@ -187,11 +193,23 @@ public class AddSalesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_orderListItemStateChanged
 
     private void addSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSalesButtonActionPerformed
-        String date = datePicker.getText();
-        String total = totalPayment.getValue().toString();
-        String code = orderList.getSelectedItem().toString();
-        Sales.create(code, date, total);
-        cancelSalesButtonActionPerformed(evt);
+        int totalStock = Integer.valueOf(Stock.getStock());
+        Map<String, String> order = Order.getOrderByCode(orderList.getSelectedItem().toString());
+
+        int weight = Integer.valueOf(order.get("weight"));
+
+        if (totalStock < weight) {
+            JOptionPane.showMessageDialog(null, "Stok tidak mencukupi, silahkan menambah stok melalui menu produksi", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String date = datePicker.getText();
+            String total = totalPayment.getValue().toString();
+            String code = orderList.getSelectedItem().toString();
+
+            Sales.create(code, date, total);
+
+            cancelSalesButtonActionPerformed(evt);
+            SalesPanel.totalSalesLabel.setText(Sales.getTotal());
+        }
     }//GEN-LAST:event_addSalesButtonActionPerformed
 
     private void clearForm() {

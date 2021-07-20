@@ -21,7 +21,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="deleteButtonNvg" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteSalesNvg" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="changeSalesNvg" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -59,7 +59,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addSalesNvg" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="changeSalesNvg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deleteButtonNvg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deleteSalesNvg" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -87,6 +87,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addSalesNvgActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="changeSalesNvg">
       <Properties>
@@ -95,6 +98,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeSalesNvgActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel30">
       <Properties>
@@ -126,13 +132,16 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="deleteButtonNvg">
+    <Component class="javax.swing.JButton" name="deleteSalesNvg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hapus"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonNvgActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteSalesNvgActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel19">
       <Properties>
